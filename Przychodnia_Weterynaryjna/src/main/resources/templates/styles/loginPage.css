@@ -1,0 +1,85 @@
+.login-list {
+    width: 100%;
+    display: flex;
+    /*flex-wrap: wrap;*/
+    justify-content: center;
+    /*align-items: center;*/
+    /*justify-items: center;*/
+
+}
+.login-list li {
+  list-style: none;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+.login-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.formForLogin {
+    width: 50%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: start;
+    height: 400px;
+    border-radius: 10px;
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+    box-shadow: 0px 0px 10px 0px rgba(66, 68, 90, 1);
+    /*box-shadow: inset 0px 0px 10px 0px rgba(66, 68, 90, 1);*/
+
+    /*box-shadow: 1px 1px 10px 1px ;*/
+    /*box-shadow: 1px 1px 10px 1px #9aff93;*/
+
+}
+
+input{
+    /*width: 100%;*/
+    border-radius: 4px;
+    box-sizing: border-box;
+    text-align: start;
+    margin-bottom: 10px;
+
+}
+#loginSubmitButton {
+    background: #4CAF50;
+    color: white;
+    padding: 5px;
+    width: 50%;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 10px auto;
+}
+
+#loginSubmitButton:hover {
+    background: #46a14a;
+}
+
+header {
+width: 50%;
+margin: auto;
+text-align: center;
+    text-shadow: 2px 2px 3px lightgreen;
+}
+
+
+/*input[type=button] {*/
+/*    !*box-sizing: border-box;*!*/
+/*    width: 50%;*/
+/*    margin: auto;*/
+
+/*    display: flex;*/
+/*    flex-flow: row;*/
+/*    !*flex-direction: row;*!*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    justify-items: center;*/
+/*}*/
+
