@@ -1,68 +1,246 @@
-*{
+/**{*/
+/*    padding: 0;*/
+/*    margin: 0;*/
+/*}*/
+
+
+
+/*header {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    flex-wrap: wrap;*/
+/*    justify-content: space-between;*/
+/*    background-color: #557C56;*/
+/*    align-items: center;*/
+/*}*/
+
+/*h1 {*/
+/*    text-align: center;*/
+/*}*/
+
+/*.logo-image {*/
+/*    height: 150px;*/
+
+/*}*/
+/*.logo-header {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    align-items: center;*/
+/*}*/
+
+/*.main-logIn-btn {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    height: 90px;*/
+/*    width: 100px;*/
+/*    background: #33372C;*/
+/*    color: white;*/
+/*    padding: 10px;*/
+/*    border: none;*/
+/*    cursor: pointer;*/
+/*    border-radius: 50%;*/
+/*    margin: 10px;*/
+/*    text-decoration: none;*/
+
+/*}*/
+/*.main-logIn-btn:hover {*/
+/*    background: #1b1e18;*/
+/*    color: white;*/
+/*}*/
+
+/*main {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    justify-items : center;*/
+/*    align-items: center;*/
+/*    !*width: 50%;*!*/
+/*    !*background-color: #FFE5CF;*!*/
+/*}*/
+
+/*footer {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*}*/
+
+
+* {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
-body{
-    /*background-color: #6A9C89;*/
+body {
+    background-color: #F4F4F9;
+    color: #33372C;
+    line-height: 1.6;
 }
-
 
 header {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
     justify-content: space-between;
-    background-color: #557C56;
     align-items: center;
+    padding: 20px;
+    background-color: #557C56;
 }
 
-h1 {
-    text-align: center;
+.logo-header {
+    display: flex;
+    align-items: center;
 }
 
 .logo-image {
-    height: 150px;
-
+    height: 100px;
+    margin-right: 15px;
 }
-.logo-header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+
+h1 {
+    font-size: 2rem;
+    color: white;
 }
 
 .main-logIn-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 90px;
-    width: 100px;
     background: #33372C;
     color: white;
-    padding: 10px;
+    padding: 10px 20px;
     border: none;
     cursor: pointer;
-    border-radius: 50%;
-    margin: 10px;
     text-decoration: none;
-
+    border-radius: 25px;
+    text-align: center;
+    font-size: 1rem;
 }
+
 .main-logIn-btn:hover {
     background: #1b1e18;
-    color: white;
 }
 
 main {
     display: flex;
     flex-direction: column;
-    justify-items : center;
     align-items: center;
-    /*width: 50%;*/
-    /*background-color: #FFE5CF;*/
+    padding: 20px;
+
 }
 
-footer {
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #33372C;
+    text-align: center;
+}
+
+article, section {
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 800px;
+}
+
+ol {
+    /*list-style-type: decimal;*/
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+ th, td {
+    border: 1px solid #33372C;
+ }
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #557C56;
+    color: white;
+}
+
+button {
+    background-color: #557C56;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background-color: #33372C;
+}
+
+form {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input[type="text"], input[type="date"] {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+a {
+    color: #557C56;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/*a:hover {*/
+/*    text-decoration: underline;*/
+/*}*/
+
+footer {
+    padding: 20px;
+    background-color: #33372C;
+    color: white;
+    text-align: center;
+}
+
+footer h3 {
+    margin-bottom: 10px;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+ul li a {
+    font-size: 1rem;
+    color: #33372C;
+    transition: color 0.3s ease;
+}
+
+ul li a:hover {
+    color: #557C56;
 }

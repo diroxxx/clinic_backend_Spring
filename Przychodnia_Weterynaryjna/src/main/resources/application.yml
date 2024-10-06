@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/wet
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: user
+    password: dominik04
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+#  sql:
+#    init:
+#      mode: always

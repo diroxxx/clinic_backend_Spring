@@ -14,12 +14,11 @@
 
 
 <section class="login-section">
-<!--  <h2>Zaloguj sie jako</h2>-->
 
   <form class="formForLogin" method="post">
 
     <ul class="login-list">
-      <li> <input type="button" name="klient-type" class="tochange" value="Klient"> </li>
+      <li> <input type="button" name="klient-type"  value="Klient" class="tochange"> </li>
       <li> <input type="button" name="doktor-type" value="Doktor" class="tochange"> </li>
     </ul>
 
@@ -29,17 +28,12 @@
     <label for="loginPasswordInput">hasło</label>
     <input id="loginPasswordInput" name="loginPasswordInput" type="password"  />
 
-<!--    <label for="radio-klient">Klient</label>-->
-<!--    <input type="radio" name="typeOfAccount" id="radio-klient" value="Klient">-->
-<!--    <label for="doktor-radio">Doktor</label>-->
-<!--    <input type="radio" name="typeOfAccount" id="doktor-radio" value="Doktor">-->
 
+    <input type="hidden" id="roleInput" name="role" value="">
 
     <button type="submit" id="loginSubmitButton">Zaloguj się</button>
 
   </form>
-
-
 
 </section>
 
