@@ -2,8 +2,7 @@
 <html lang="pl" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link href="../styles/mainPage.css"  rel="stylesheet">
-<!--    <link th:href="@{/styles/mainPage.css}" rel="stylesheet">-->
+    <link href="../static/styles/mainPage.css" rel="stylesheet" th:href="@{/styles/mainPage.css}">
     <title>Wet</title>
 </head>
 <body>
@@ -14,7 +13,7 @@
             <h1>Przychodnia <br> weterynaryjna</h1>
         </div>
 
-    <a href="login.html" class="main-logIn-btn">Zaloguj się </a>
+    <a th:href="@{/home/loginView}" class="main-logIn-btn">Log in</a>
 
   </header>
 
@@ -26,12 +25,9 @@
       </article>
 
       <section>
-          <h2>Zwierzeta które obsługujemy</h2>
-          <ol>
-              <li> psy </li>
-              <li>Koty</li>
-              <li>Krowy</li>
-              <li>Konie</li>
+          <h2>Animals we service</h2>
+          <ol th:each="type : ${animalsType}" >
+              <li th:text="${type}" > dog </li>
           </ol>
 
       </section>
