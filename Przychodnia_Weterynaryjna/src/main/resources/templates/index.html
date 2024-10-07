@@ -26,9 +26,9 @@
 
       <section>
           <h2>Animals we service</h2>
-          <ol th:each="type : ${animalsType}" >
-              <li th:text="${type}" > dog </li>
-          </ol>
+          <div class="containerAnimalType" th:each="type : ${animalsType}" >
+              <p class="animalTypeBlock" th:text="${type}" > dog </p>
+          </div>
 
       </section>
 

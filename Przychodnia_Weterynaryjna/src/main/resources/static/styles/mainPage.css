@@ -76,14 +76,22 @@ article, section {
     max-width: 800px;
 }
 
-ol {
-    /*list-style-type: decimal;*/
-    padding-left: 20px;
+.containerAnimalType {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-items: center;
+    align-items: center;
 }
 
-li {
-    margin-bottom: 10px;
-    font-size: 1.2rem;
+.animalTypeBlock {
+    list-style: none;
+    color: white;
+    padding: 30px;
+    margin: 10px;
+    font-size: 1.5rem;
+    border-radius: 20%;
+    background-color: #557C56;
 }
 
 table {
