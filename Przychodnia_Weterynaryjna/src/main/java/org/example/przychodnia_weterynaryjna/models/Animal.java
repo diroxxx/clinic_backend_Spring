@@ -16,13 +16,17 @@ public class Animal {
     @Null
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "client_id", nullable = false)
-    private Client client;
 
     @ManyToOne
     @JoinColumn(name = "animal_type_id", nullable = false)
     private AnimalType animalType;
+
+
+    @ManyToOne
+    @JoinColumn(name = "client_id", nullable = false)
+    private Client client;
+
+
 
 
     public Animal() {

@@ -17,7 +17,7 @@ VALUES
     (5, 3); -- Emily Johnson (Weterynarz)
 
 -- Wstawienie danych do tabeli AnimalType
-INSERT INTO AnimalType (type)
+INSERT INTO Animal_Type (type)
 VALUES
     ('Dog'),
     ('Cat'),

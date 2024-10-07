@@ -5,6 +5,8 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Null;
 import jakarta.validation.constraints.Size;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -14,8 +16,8 @@ public class Appointment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "ap_date", nullable = false)
-    private Date appointmentDate;
+    @Column(name = "ap_date", nullable = false )
+    private LocalDateTime appointmentDate;
 
     @Size(max = 500)
     private String description;

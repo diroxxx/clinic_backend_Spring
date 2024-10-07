@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS service (
 );
 
 -- Table: AnimalType
-CREATE TABLE IF NOT EXISTS AnimalType (
+CREATE TABLE IF NOT EXISTS Animal_Type (
                             id int NOT NULL AUTO_INCREMENT,
                             type varchar(50) NOT NULL,
                             CONSTRAINT AnimalType_pk PRIMARY KEY (id)
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS Animal (
                         animal_type_id  int NOT NULL,
                         client_id int NOT NULL,
                         CONSTRAINT Animal_pk PRIMARY KEY (id),
-                        FOREIGN KEY (animal_type_id ) REFERENCES AnimalType(id),
+                        FOREIGN KEY (animal_type_id ) REFERENCES Animal_Type(id),
                         FOREIGN KEY (client_id) REFERENCES client(id)
 );
 
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS article (
                          id int NOT NULL AUTO_INCREMENT,
                          title varchar(100) NOT NULL,
                          content varchar(1000) NOT NULL,
-                         date date NOT NULL,
+                         date datetime NOT NULL,
                          vet_id int NOT NULL,
                          CONSTRAINT article_pk PRIMARY KEY (id),
                          FOREIGN KEY (vet_id) REFERENCES vet(id)
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS article (
 -- Table: Appointment
 CREATE TABLE IF NOT EXISTS Appointment (
                              id int NOT NULL AUTO_INCREMENT,
-                             ap_date date NOT NULL,
+                             ap_date datetime NOT NULL,
                              description varchar(500) NULL ,
                              status ENUM('scheduled', 'completed', 'canceled') NOT NULL,
                              vet_id int NOT NULL,

@@ -12,7 +12,7 @@ public class AnimalType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(unique = true, nullable = false, name = "type")
+    @Column(unique = true, nullable = false)
     @Size(max = 50)
     private String type;
 

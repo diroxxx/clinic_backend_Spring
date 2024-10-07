@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -22,7 +24,7 @@ public class Article {
     private String content;
 
     @NotNull
-    private Date date;
+    private LocalDateTime date;
 
     @ManyToOne
     @JoinColumn(name = "vet_id", nullable = false)
@@ -33,7 +35,7 @@ public class Article {
     }
 
 
-    public Article(int id, String title, String content, Date date, Vet vet) {
+    public Article(int id, String title, String content, LocalDateTime date, Vet vet) {
         this.id = id;
         this.title = title;
         this.content = content;
@@ -66,11 +68,11 @@ public class Article {
         this.content = content;
     }
 
-    public @NotNull Date getDate() {
+    public @NotNull LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(@NotNull Date date) {
+    public void setDate(@NotNull LocalDateTime date) {
         this.date = date;
     }
 
