@@ -6,8 +6,8 @@ spring:
     password: dominik04
   jpa:
     show-sql: true
-    hibernate:
-      ddl-auto: create-drop
+#    hibernate:
+#      ddl-auto: create
   sql:
     init:
       mode: always

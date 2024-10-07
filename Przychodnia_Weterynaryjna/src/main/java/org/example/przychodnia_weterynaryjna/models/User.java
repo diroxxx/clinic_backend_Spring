@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import org.springframework.format.annotation.NumberFormat;
 
 @Entity
 public class User {
@@ -30,30 +29,24 @@ public class User {
     private String email;
 
     @Size(min = 9, max = 9)
+    @NotNull
+    @Column(name = "phone_number")
     private String phoneNumber;
-
 
     @NotNull
     @Size(min = 8, max = 40)
     private String password;
 
-    @NotNull
-
-    @Enumerated(EnumType.STRING)
-    private UserRole role;
-
-
 
     public User() {
     }
 
-    public User(String firstName, String lastName, String email, String phoneNumber, String password, UserRole role) {
+    public User(String firstName, String lastName, String email, String phoneNumber, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.password = password;
-        this.role = role;
     }
 
     public int getId() {
@@ -104,11 +97,4 @@ public class User {
         this.password = password;
     }
 
-    public @NotNull Enum<UserRole> getRole() {
-        return role;
-    }
-
-    public void setRole(@NotNull UserRole role) {
-        this.role = role;
-    }
 }

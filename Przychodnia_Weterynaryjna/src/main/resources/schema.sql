@@ -1,74 +1,81 @@
--- Tabela User
-CREATE TABLE User (
-                      id INT AUTO_INCREMENT PRIMARY KEY,
-                      first_name VARCHAR(50) NOT NULL,
-                      last_name VARCHAR(50) NOT NULL,
-                      email VARCHAR(50) NOT NULL UNIQUE,
-                      phone_number VARCHAR(9),
-                      password VARCHAR(40) NOT NULL,
-                      role ENUM('CLIENT', 'VET') NOT NULL
+-- Table: user
+CREATE TABLE IF NOT EXISTS user (
+                      id int NOT NULL AUTO_INCREMENT,
+                      first_name varchar(50) NOT NULL,
+                      last_name varchar(50) NOT NULL,
+                      email varchar(100) NOT NULL,
+                      phone_number varchar(15) NOT NULL,
+                      password varchar(40) NOT NULL,
+                      CONSTRAINT user_pk PRIMARY KEY (id)
 );
 
--- Tabela Client
-CREATE TABLE Client (
-                        id INT AUTO_INCREMENT PRIMARY KEY,
-                        user_id INT NOT NULL,
-                        FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE CASCADE
+-- Table: client
+CREATE TABLE IF NOT EXISTS client (
+                        id int NOT NULL AUTO_INCREMENT,
+                        user_id int NOT NULL,
+                        CONSTRAINT client_pk PRIMARY KEY (id),
+                        FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
-
-
--- Tabela Vet
-CREATE TABLE Vet (
-                     id INT AUTO_INCREMENT PRIMARY KEY,
-                     user_id INT NOT NULL,
-                     years_of_experience INT NOT NULL,
-                     FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE CASCADE
-
-                 );
-
-CREATE TABLE Article (
-                         id INT AUTO_INCREMENT PRIMARY KEY,
-                         title VARCHAR(100) NOT NULL,
-                         content VARCHAR(1000) NOT NULL,
-                         vet_id INT NOT NULL,
-                         publication_date DATE NOT NULL,
-                         FOREIGN KEY (vet_id) REFERENCES Vet(id) ON DELETE CASCADE
+-- Table: vet
+CREATE TABLE IF NOT EXISTS vet (
+                     id int NOT NULL AUTO_INCREMENT,
+                     years_of_experience int NOT NULL,
+                     user_id int NOT NULL,
+                     CONSTRAINT vet_pk PRIMARY KEY (id),
+                     FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
--- Tabela AnimalType (typy zwierząt)
-CREATE TABLE AnimalType (
-                            id INT AUTO_INCREMENT PRIMARY KEY,
-                            type_name VARCHAR(50) NOT NULL UNIQUE
+-- Table: service
+CREATE TABLE IF NOT EXISTS service (
+                         id int NOT NULL AUTO_INCREMENT,
+                         name varchar(50) NOT NULL,
+                         price DECIMAL(10,2) NOT NULL,
+                         CONSTRAINT service_pk PRIMARY KEY (id)
 );
 
--- Tabela Animal
-CREATE TABLE Animal (
-                        id INT AUTO_INCREMENT PRIMARY KEY,
-                        name VARCHAR(50),
-                        animal_type_id INT NOT NULL,
-                        client_id INT NOT NULL,
-                        FOREIGN KEY (animal_type_id) REFERENCES AnimalType(id) On DELETE CASCADE ,
-                        FOREIGN KEY (client_id) REFERENCES Client(id) ON DELETE CASCADE
+-- Table: AnimalType
+CREATE TABLE IF NOT EXISTS AnimalType (
+                            id int NOT NULL AUTO_INCREMENT,
+                            type varchar(50) NOT NULL,
+                            CONSTRAINT AnimalType_pk PRIMARY KEY (id)
 );
 
--- Tabela Service
-CREATE TABLE Service (
-                         id INT AUTO_INCREMENT PRIMARY KEY,
-                         name VARCHAR(100) NOT NULL,
-                         price DECIMAL(10, 2) NOT NULL
+-- Table: Animal
+CREATE TABLE IF NOT EXISTS Animal (
+                        id int NOT NULL AUTO_INCREMENT,
+                        name varchar(50) NULL,
+                        animal_type_id  int NOT NULL,
+                        client_id int NOT NULL,
+                        CONSTRAINT Animal_pk PRIMARY KEY (id),
+                        FOREIGN KEY (animal_type_id ) REFERENCES AnimalType(id),
+                        FOREIGN KEY (client_id) REFERENCES client(id)
 );
 
--- Tabela Appointment
-CREATE TABLE Appointment (
-                             id INT AUTO_INCREMENT PRIMARY KEY,
-                             appointment_date DATETIME NOT NULL,
-                             vet_id INT NOT NULL,
-                             client_id INT NOT NULL,
-                             animal_id INT NOT NULL,
-                             service_id INT NOT NULL,
-                             FOREIGN KEY (vet_id) REFERENCES Vet(id),
-                             FOREIGN KEY (client_id) REFERENCES Client(id),
-                             FOREIGN KEY (animal_id) REFERENCES Animal(id),
-                             FOREIGN KEY (service_id) REFERENCES Service(id)
+-- Table: article
+CREATE TABLE IF NOT EXISTS article (
+                         id int NOT NULL AUTO_INCREMENT,
+                         title varchar(100) NOT NULL,
+                         content varchar(1000) NOT NULL,
+                         date date NOT NULL,
+                         vet_id int NOT NULL,
+                         CONSTRAINT article_pk PRIMARY KEY (id),
+                         FOREIGN KEY (vet_id) REFERENCES vet(id)
+);
+
+-- Table: Appointment
+CREATE TABLE IF NOT EXISTS Appointment (
+                             id int NOT NULL AUTO_INCREMENT,
+                             ap_date date NOT NULL,
+                             description varchar(500) NULL ,
+                             status ENUM('scheduled', 'completed', 'canceled') NOT NULL,
+                             vet_id int NOT NULL,
+                             service_id int NOT NULL,
+                             client_id int NOT NULL,
+                             animal_id int NOT NULL,
+                             CONSTRAINT Appointment_pk PRIMARY KEY (id),
+                             FOREIGN KEY (vet_id) REFERENCES vet(id),
+                             FOREIGN KEY (service_id) REFERENCES service(id),
+                             FOREIGN KEY (client_id) REFERENCES client(id),
+                             FOREIGN KEY (animal_id) REFERENCES Animal(id)
 );

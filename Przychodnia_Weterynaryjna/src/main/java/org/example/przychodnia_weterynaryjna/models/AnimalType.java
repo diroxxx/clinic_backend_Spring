@@ -12,10 +12,44 @@ public class AnimalType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(unique = true, nullable = false, name = "type_name")
+    @Column(unique = true, nullable = false, name = "type")
     @Size(max = 50)
-    private String typeName;
+    private String type;
 
     @OneToMany(mappedBy = "animalType")
     private List<Animal> animals = new ArrayList<>();
+
+
+    public AnimalType(String type) {
+        this.type = type;
+    }
+
+    public AnimalType() {
+
+    }
+
+
+    public @Size(max = 50) String getType() {
+        return type;
+    }
+
+    public void setType(@Size(max = 50) String type) {
+        this.type = type;
+    }
+
+    public List<Animal> getAnimals() {
+        return animals;
+    }
+
+    public void setAnimals(List<Animal> animals) {
+        this.animals = animals;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

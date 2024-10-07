@@ -1,54 +1,52 @@
-INSERT INTO User (first_name, last_name, email, phone_number, password, role)
+-- Wstawienie danych do tabeli user
+INSERT INTO user (first_name, last_name, email, phone_number, password)
 VALUES
-    ('John', 'Doe', 'john.doe@example.com', '123456789', 'password123', 'CLIENT'),
-    ('Jane', 'Smith', 'jane.smith@example.com', '987654321', 'password123', 'VET'),
-    ('Mark', 'Johnson', 'mark.johnson@example.com', '123123123', 'password123', 'CLIENT'),
-    ('Emily', 'Brown', 'emily.brown@example.com', '987987987', 'password123', 'VET');
+    ('John', 'Doe', 'john.doe@example.com', '123456789', 'password123'),
+    ('Jane', 'Smith', 'jane.smith@example.com', '987654321', 'password456'),
+    ('Emily', 'Johnson', 'emily.johnson@example.com', '555666777', 'password789');
 
--- Wstawienie danych do tabeli Client
-INSERT INTO Client (user_id)
+-- Wstawienie danych do tabeli client
+INSERT INTO client (user_id)
 VALUES
-    (1),  -- John Doe
-    (3);  -- Mark Johnson
+    (1), -- John Doe
+    (2); -- Jane Smith
 
--- Wstawienie danych do tabeli Vet
-INSERT INTO Vet (user_id, years_of_experience)
+-- Wstawienie danych do tabeli vet
+INSERT INTO vet (years_of_experience, user_id)
 VALUES
-    (2, 5),  -- Jane Smith, 5 lat doświadczenia
-    (4, 10); -- Emily Brown, 10 lat doświadczenia
-
--- Wstawienie danych do tabeli Article
-INSERT INTO Article (title, content, vet_id, publication_date)
-VALUES
-    ('How to Care for Your Dog', 'This article covers dog care basics.', 1, '2023-01-15'),
-    ('Understanding Feline Health', 'An overview of common cat health issues.', 2, '2023-03-10');
+    (5, 3); -- Emily Johnson (Weterynarz)
 
 -- Wstawienie danych do tabeli AnimalType
-INSERT INTO AnimalType (type_name)
+INSERT INTO AnimalType (type)
 VALUES
     ('Dog'),
     ('Cat'),
-    ('Horse'),
-    ('Cow');
+    ('Horse');
 
 -- Wstawienie danych do tabeli Animal
 INSERT INTO Animal (name, animal_type_id, client_id)
 VALUES
-    ('Buddy', 1, 1),  -- Pies (Dog) należący do Johna Doe
-    ('Whiskers', 2, 1),  -- Kot (Cat) należący do Johna Doe
-    ('Thunder', 3, 3),  -- Koń (Horse) należący do Marka Johnsona
-    ('Bessie', 4, 3);  -- Krowa (Cow) należąca do Marka Johnsona
+    ('Buddy', 1, 1), -- Pies należący do Johna
+    ('Whiskers', 2, 1), -- Kot Johna
+    ('Thunder', 3, 2); -- Koń Jane
 
--- Wstawienie danych do tabeli Service
-INSERT INTO Service (name, price)
+-- Wstawienie danych do tabeli service
+INSERT INTO service (name, price)
 VALUES
     ('Vaccination', 50.00),
-    ('Checkup', 30.00),
-    ('Surgery', 200.00);
+    ('Check-up', 30.00),
+    ('Surgery', 300.00);
 
 -- Wstawienie danych do tabeli Appointment
-INSERT INTO Appointment (appointment_date, vet_id, client_id, animal_id, service_id)
+INSERT INTO Appointment (ap_date, description, status, vet_id, service_id, client_id, animal_id)
 VALUES
-    ('2023-06-01 10:00:00', 1, 1, 1, 1),  -- Wizyta u weterynarza (Vaccination) dla psa (Buddy)
-    ('2023-06-15 14:00:00', 2, 3, 3, 2),  -- Checkup konia (Thunder)
-    ('2023-07-01 11:00:00', 1, 1, 2, 1);  -- Vaccination dla kota (Whiskers)
+    ('2024-10-07', 'Annual vaccination for Buddy', 'completed', 1, 1, 1,2), -- Wizyta Johna z Buddy u Emily
+    ('2024-10-09', 'Check-up for Whiskers', 'scheduled', 1, 2, 1,1), -- Wizyta Johna z Whiskers
+    ('2024-10-10', 'Surgery for Thunder', 'scheduled', 1, 3, 2,1); -- Wizyta Jane z Thunder
+
+-- Wstawienie danych do tabeli article
+INSERT INTO article (title, content, date, vet_id)
+VALUES
+    ('The Importance of Vaccinations', 'Vaccinations are crucial for your pet’s health...', '2024-10-05', 1),
+    ('How to Care for Senior Pets', 'As pets age, they require different care...', '2024-10-01', 1);
+
