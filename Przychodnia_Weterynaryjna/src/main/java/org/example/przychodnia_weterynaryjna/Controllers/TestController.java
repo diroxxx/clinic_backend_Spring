@@ -5,7 +5,9 @@ import org.example.przychodnia_weterynaryjna.Repositories.ClientRepository;
 import org.example.przychodnia_weterynaryjna.Services.AnimalService;
 import org.example.przychodnia_weterynaryjna.Services.AnimalTypeService;
 import org.example.przychodnia_weterynaryjna.Services.ClientService;
+import org.example.przychodnia_weterynaryjna.Services.ServiceTypeService;
 import org.example.przychodnia_weterynaryjna.models.Client;
+import org.example.przychodnia_weterynaryjna.models.Service;
 import org.springframework.data.repository.support.Repositories;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,13 +25,15 @@ public class TestController {
     private final ClientService clientService;
     private final AnimalService animalService;
     private final AnimalTypeService animalTypeService;
-    private final AnimalTypeRepository animalTypeRepository;
+    private final ServiceTypeService serviceTypeService;
 
-    public TestController (ClientService clientService, AnimalService animalService, AnimalTypeService animalTypeService, AnimalTypeRepository animalTypeRepository) {
+    public TestController (ClientService clientService, AnimalService animalService,
+                           AnimalTypeService animalTypeService,
+                           ServiceTypeService serviceTypeService) {
         this.clientService = clientService;
         this.animalService = animalService;
         this.animalTypeService = animalTypeService;
-        this.animalTypeRepository = animalTypeRepository;
+        this.serviceTypeService = serviceTypeService;
     }
 
 
@@ -38,6 +42,9 @@ public class TestController {
     public String home(Model model) {
         List<String> animalsTypeList = animalTypeService.getAllAnimalTypes();
         model.addAttribute("animalsType",animalsTypeList);
+
+        List<Service> servicesTypeList = serviceTypeService.printAllServices();
+        model.addAttribute("servicesType",servicesTypeList);
         return "index";
     }
 

@@ -33,25 +33,23 @@
       </section>
 
       <section>
-          <h2>Usługi</h2>
+          <h2>Services</h2>
           <table>
+              <thead>
               <tr>
-                  <th>Nazwa</th>
-                  <th>Cena</th>
+                  <th>Name</th>
+                  <th>Price</th>
               </tr>
-              <tr>
-                  <td>Usg</td>
-                  <td>320zł</td>
-              </tr>
-              <tr>
-                  <td>Szczepienie</td>
-                  <td>100zł</td>
-              </tr>
-              <tr>
-                  <td>Kontrol</td>
-                  <td>50zł</td>
+              </thead>
+
+              <tbody>
+              <tr th:each="serType : ${servicesType}" th:object="${serType}">
+                  <td th:text="*{name}">Usg</td>
+                  <td th:text="*{price}">320zł</td>
+
               </tr>
 
+              </tbody>
           </table>
       </section>
 
