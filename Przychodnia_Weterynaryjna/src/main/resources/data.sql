@@ -21,7 +21,12 @@ INSERT INTO Animal_Type (type)
 VALUES
     ('Dog'),
     ('Cat'),
-    ('Horse');
+    ('Horse'),
+    ('Rabbit'),
+    ('Bird'),
+    ('Hamster'),
+    ('Guinea Pig'),
+    ('Ferret');
 
 -- Wstawienie danych do tabeli Animal
 INSERT INTO Animal (name, animal_type_id, client_id)
@@ -35,7 +40,17 @@ INSERT INTO service (name, price)
 VALUES
     ('Vaccination', 50.00),
     ('Check-up', 30.00),
-    ('Surgery', 300.00);
+    ('Surgery', 300.00),
+    ('Dental Cleaning', 120.00),
+    ('X-Ray', 150.00),
+    ('Blood Test', 45.00),
+    ('Ultrasound', 200.00),
+    ('Neutering', 250.00),
+    ('Microchipping', 40.00),
+    ('Emergency Care', 500.00),
+    ('Pet Grooming', 70.00),
+    ('Nutritional Consultation', 60.00);
+
 
 -- Wstawienie danych do tabeli Appointment
 INSERT INTO Appointment (ap_date, description, status, vet_id, service_id, client_id, animal_id)

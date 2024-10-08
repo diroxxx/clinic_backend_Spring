@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <link href="../static/styles/mainPage.css" rel="stylesheet" th:href="@{/styles/mainPage.css}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cinzel|Fauna+One">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Space+Mono|Muli">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cinzel|Fauna+One">
+
     <title>Wet</title>
 </head>
 <body>
@@ -13,27 +17,37 @@
             <h1>Przychodnia <br> weterynaryjna</h1>
         </div>
 
-    <a th:href="@{/home/login}" class="main-logIn-btn">Log in</a>
+      <div class = "btn-header-container">
+
+          <a  class="main-SingIn-btn">Sign in</a>
+          <a th:href="@{/home/login}" class="main-logIn-btn">Log in</a>
+      </div>
 
   </header>
-
 
   <main>
       <article>
           <h2>O naszej działalności</h2>
-          <p>informacje o działalności przychodni</p>
+          <p>Witamy w Przychodni Weterynaryjnej "AnimalCare", miejscu, w którym priorytetem jest zdrowie i dobro Twojego zwierzaka. Jesteśmy zespołem doświadczonych weterynarzy, którzy z pasją podchodzą do opieki nad zwierzętami domowymi. Od lat pomagamy właścicielom psów, kotów, gryzoni i innych pupili w dbaniu o ich zdrowie i dobre samopoczucie.
+
+              Nasza oferta obejmuje pełen zakres usług weterynaryjnych: od rutynowych szczepień i badań profilaktycznych, po skomplikowane zabiegi chirurgiczne i leczenie chorób przewlekłych. Nasz nowoczesny sprzęt diagnostyczny pozwala nam szybko i dokładnie stawiać diagnozy, co przekłada się na skuteczniejsze leczenie.
+
+              Wierzymy, że każda wizyta powinna być komfortowa zarówno dla zwierzaka, jak i jego właściciela. Dlatego stawiamy na indywidualne podejście oraz empatię w kontaktach z naszymi pacjentami. W naszej przychodni znajdziesz także sklep z wysokiej jakości karmą oraz akcesoriami dla zwierząt.
+
+              Oferujemy również usługi z zakresu fizjoterapii oraz porady dietetyczne, by Twój pupil mógł cieszyć się zdrowiem i energią przez długie lata. Nasza klinika jest otwarta 7 dni w tygodniu, a w nagłych przypadkach oferujemy całodobową pomoc.</p>
       </article>
 
-      <section>
+      <section class="animal-container">
           <h2>Animals we service</h2>
           <div class="containerAnimalType" th:each="type : ${animalsType}" >
-              <p class="animalTypeBlock" th:text="${type}" > dog </p>
+              <p class="animalTypeBlock" th:text="${type}"> dog </p>
           </div>
 
       </section>
 
       <section>
           <h2>Services</h2>
+
           <table>
               <thead>
               <tr>
@@ -61,7 +75,7 @@
               <input id="typ" type="text"><br>
               <label for="zwierze">Typ zwierzecia:</label>
               <input id="zwierze" type="text"><br>
-              <label for="data">data</label>
+              <label for="data">data:</label>
               <input id="data" type="date"><br>
               <button type="submit">Rezerwuj</button>
           </form>
@@ -69,7 +83,7 @@
       </section>
 
       <section>
-          <h3>Warto przeczytać</h3>
+          <h2>Warto przeczytać</h2>
           <ul>
               <li><a href="">Najgorsze choroby u zierząt w 2024</a></li>
               <li><a href="">Jak pomóc zwierzetom w zime</a></li>
@@ -79,13 +93,20 @@
 
   </main>
 
-
-
-
 <footer>
-    <h3>Kontakt</h3>
-    <p>email: <strong>przychodnia1@wp.pl</strong> </p>
-    <p> tel:  <strong>123-123-123</strong> </p>
+    <div class="social-media-block">
+        <p>Social media</p>
+        <a href="" > <img src="/photos/facebook.png" alt="facebook icon"></a>
+        <a href="" > <img src="/photos/instagram.png" alt="Instagram icon"></a>
+        <a href="" > <img src="/photos/tiktok.png" alt="tiktok icon"></a>
+    </div>
+
+    <div class="contact-block">
+        <h3>Kontakt</h3>
+        <p>email: <strong>przychodnia1@wp.pl</strong> </p>
+        <p> tel:  <strong>123-123-123</strong> </p>
+    </div>
+
 </footer>
 </body>
 </html>
