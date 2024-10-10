@@ -2,20 +2,52 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+
 }
+
+body {
+    background-color: #F4F4F9;
+    color: #33372C;
+    line-height: 1.6;
+    font-family: 'Fauna One', serif;
+
+}
+h1, h2{
+    /*font-family: "Space Mono", monospace;*/
+    font-family: Cinzel, serif;
+
+}
+h2 {
+    border-bottom: 3px #33372C solid;
+
+}
+
+/*p, label, td {*/
+/*    font-weight: bold;*/
+/*    font-size: 1em;*/
+/*}*/
+
+
+
+/*start of header */
 
 header {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: #557C56;
+    background: rgb(85,124,86);
+    background: linear-gradient(0deg, rgba(85,124,86,1) 0%, rgba(51,55,44,1) 88%);
+    box-shadow: 2px 2px 3px #33372C;
+    /*height: 14vh;*/
+    /*padding: 10px;*/
+
 }
 
 .logo-header {
     display: flex;
     align-items: center;
+    text-align: center;
+    justify-content: center;
 }
 
 .logo-image {
@@ -26,22 +58,41 @@ header {
 h1 {
     font-size: 2rem;
     color: white;
+    letter-spacing: 5px;
+
 }
 
-.main-logOut-btn {
+.btn-header-container {
+
+    display: flex;
+    align-self: flex-end;
+
+}
+
+.logOut-btn {
     background: #33372C;
+    /*margin: 0;*/
     color: white;
     padding: 10px 20px;
     border: none;
     cursor: pointer;
     text-decoration: none;
-    border-radius: 25px;
+    /*border-radius: 25px;*/
     text-align: center;
     font-size: 1rem;
-    justify-items: center;
-    font-weight: bold;
+    transition: background-color 0.5s ease;
+
+
+}
+.logOut-btn{
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
 }
 
-.main-logOut-btn:hover {
+
+
+.logOut-btn:hover {
     background: #1b1e18;
 }
+/*//end header*/
+

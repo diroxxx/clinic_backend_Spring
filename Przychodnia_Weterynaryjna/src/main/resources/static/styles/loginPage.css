@@ -14,12 +14,14 @@ body {
 header {
     width: 100%;
     padding: 20px;
-    background-color: #557C56;
     color: white;
     text-align: center;
     font-size: 2rem;
     text-shadow: 2px 2px 3px lightgreen;
     margin-bottom: 30px;
+    background: rgb(85,124,86);
+    background: linear-gradient(0deg, rgba(85,124,86,1) 0%, rgba(51,55,44,1) 88%);
+    box-shadow: 2px 2px 3px #33372C;
 }
 
 .login-section {

@@ -3,21 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Client-Wet</title>
-    <link href="../static/styles/client.css" rel="stylesheet">
+    <link href="../static/styles/client.css" th:href="@{/styles/client.css}" rel="stylesheet">
+<!--    <link href="../static/styles/client.css" th:href="@{/styles/client.css}" rel="stylesheet">-->
 </head>
 
 <body>
 
 <header>
-
     <div class="logo-header">
-        <img class="logo-image" src="/photos/logo.png" alt="zdjecie weterynarza">
+        <img class="logo-image" src="/photos/logo.png" th:href="@{/photos/logo.png}" alt="zdjecie weterynarza">
         <h1>Przychodnia <br> weterynaryjna</h1>
     </div>
 
-    <a href="login.html" class="main-logOut-btn">Wyloguj się </a>
-
+    <div class = "btn-header-container">
+        <a th:href="@{/home}" class="logOut-btn">Log out</a>
+    </div>
 </header>
+<nav>
+    <ul>
+        <li>History of reservation</li>
+        <li>Book a reservation</li>
+    </ul>
+</nav>
+
+
+<main>
+
+    <div class="content-div"></div>
+</main>
+
+
+
+
+
 
 </body>
 </html>
