@@ -14,8 +14,5 @@ public class ClientService {
         this.clientRepository = clientRepository;
     }
 
-   public String printFirst() {
-        Optional<Client> client = clientRepository.findById(1);
-        return client.map(value -> value.getId() + value.getUser().getFirstName()).orElse("nie ma");
-    }
+
 }

@@ -277,17 +277,23 @@ ul {
 
 ul li {
     margin-bottom: 10px;
+    padding-bottom: 1px;
+
 }
 
-ul li a {
+ul li{
     font-size: 1rem;
     color: #33372C;
     transition: color 0.3s ease;
+    cursor: pointer;
+    font-weight: bold;
+
 }
 
-ul li a:hover {
+ul li:hover {
     color: #557C56;
-    font-weight: bold;
+    font-weight: bolder;
+
 }
 
 .article-block{

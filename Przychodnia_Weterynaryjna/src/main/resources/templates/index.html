@@ -2,6 +2,7 @@
 <html lang="pl" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <script src="../static/scripts/scripts.js"  th:src="@{/scripts/scripts.js}"></script>
     <link href="../static/styles/mainPage.css" rel="stylesheet" th:href="@{/styles/mainPage.css}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cinzel|Fauna+One">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Space+Mono|Muli">
@@ -86,14 +87,19 @@
       <section>
           <h2>Warto przeczytać</h2>
           <ul>
-              <li><a href="">Najgorsze choroby u zierząt w 2024</a></li>
-              <li><a href="">Jak pomóc zwierzetom w zime</a></li>
+              <li th:each="article : ${articles}" th:object="${article}">
+                  <p th:text="*{title}"   th:attr="data-title=*{title}" onclick="showArticle(this)"> </p>
+              </li>
+
           </ul>
       </section>
 
-      <section class="article-block">
 
-
+      <section class="article-block" th:id="*{title}" th:each="article : ${articles}" th:object="${article}"  >
+          <h2 th:text="*{title}" class="curly-title">Przykładowy tytuł</h2>
+            <p th:text="*{content}">Przykładowa treść artykułu.</p>
+            <p th:text="*{author}">autor</p>
+            <p th:text="*{publicationDate}">data</p>
       </section>
 
 

@@ -19,17 +19,33 @@
         <a th:href="@{/home}" class="logOut-btn">Log out</a>
     </div>
 </header>
-<nav>
-    <ul>
-        <li>History of reservation</li>
-        <li>Book a reservation</li>
-    </ul>
-</nav>
-
 
 <main>
 
+    <nav>
+        <ul>
+            <li>History of reservation</li>
+            <li>Book a reservation</li>
+        </ul>
+    </nav>
+
+
+
     <div class="content-div"></div>
+
+                <section>
+                  <h2>Rezerwacja  Usługi</h2>
+                  <br>
+                  <form method="post">
+                      <label for="typ">Typ usługi:</label>
+                      <input id="typ" type="text"><br>
+                      <label for="zwierze">Typ zwierzecia:</label>
+                      <input id="zwierze" type="text"><br>
+                      <label for="data">data:</label>
+                      <input id="data" type="date"><br>
+                      <button type="submit">Rezerwuj</button>
+                  </form>
+              </section>
 </main>
 
 

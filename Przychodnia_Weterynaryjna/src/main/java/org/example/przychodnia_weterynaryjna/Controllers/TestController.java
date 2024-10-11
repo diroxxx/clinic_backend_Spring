@@ -1,22 +1,24 @@
 package org.example.przychodnia_weterynaryjna.Controllers;
 
+import org.example.przychodnia_weterynaryjna.DTOs.VetArticleDto;
 import org.example.przychodnia_weterynaryjna.Repositories.AnimalTypeRepository;
 import org.example.przychodnia_weterynaryjna.Repositories.ClientRepository;
-import org.example.przychodnia_weterynaryjna.Services.AnimalService;
-import org.example.przychodnia_weterynaryjna.Services.AnimalTypeService;
-import org.example.przychodnia_weterynaryjna.Services.ClientService;
-import org.example.przychodnia_weterynaryjna.Services.ServiceTypeService;
+import org.example.przychodnia_weterynaryjna.Services.*;
+import org.example.przychodnia_weterynaryjna.models.Article;
 import org.example.przychodnia_weterynaryjna.models.Client;
 import org.example.przychodnia_weterynaryjna.models.Service;
 import org.springframework.data.repository.support.Repositories;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/home")
@@ -26,14 +28,16 @@ public class TestController {
     private final AnimalService animalService;
     private final AnimalTypeService animalTypeService;
     private final ServiceTypeService serviceTypeService;
+    private final ArticleService articleService;
 
     public TestController (ClientService clientService, AnimalService animalService,
                            AnimalTypeService animalTypeService,
-                           ServiceTypeService serviceTypeService) {
+                           ServiceTypeService serviceTypeService, ArticleService articleService) {
         this.clientService = clientService;
         this.animalService = animalService;
         this.animalTypeService = animalTypeService;
         this.serviceTypeService = serviceTypeService;
+        this.articleService = articleService;
     }
 
 
@@ -45,6 +49,9 @@ public class TestController {
 
         List<Service> servicesTypeList = serviceTypeService.printAllServices();
         model.addAttribute("servicesType",servicesTypeList);
+
+        List<VetArticleDto> articleDtos = articleService.getAllArticle();
+        model.addAttribute("articles",articleDtos);
         return "index";
     }
 
@@ -53,10 +60,14 @@ public class TestController {
         return "login";
     }
 
+//    @GetMapping("/article/{title}")
+//    public ResponseEntity<VetArticleDto> getVetArticle(@PathVariable String title) {
+//        VetArticleDto vetArticleDto = articleService.getArticleByTitle(title);
+//        if (vetArticleDto == null) {
+//            return ResponseEntity.notFound().build();
+//        }
+//        return ResponseEntity.ok(vetArticleDto);
+//    }
 
-    @RequestMapping("/example")
-    @ResponseBody
-    String ex() {
-      return  clientService.printFirst();
-    }
+
 }
