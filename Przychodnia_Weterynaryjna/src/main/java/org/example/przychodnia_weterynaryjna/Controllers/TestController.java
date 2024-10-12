@@ -60,14 +60,5 @@ public class TestController {
         return "login";
     }
 
-//    @GetMapping("/article/{title}")
-//    public ResponseEntity<VetArticleDto> getVetArticle(@PathVariable String title) {
-//        VetArticleDto vetArticleDto = articleService.getArticleByTitle(title);
-//        if (vetArticleDto == null) {
-//            return ResponseEntity.notFound().build();
-//        }
-//        return ResponseEntity.ok(vetArticleDto);
-//    }
-
 
 }

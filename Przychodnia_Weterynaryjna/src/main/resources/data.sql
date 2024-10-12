@@ -3,7 +3,9 @@ INSERT INTO user (first_name, last_name, email, phone_number, password)
 VALUES
     ('John', 'Doe', 'john.doe@example.com', '123456789', 'password123'),
     ('Jane', 'Smith', 'jane.smith@example.com', '987654321', 'password456'),
-    ('Emily', 'Johnson', 'emily.johnson@example.com', '555666777', 'password789');
+    ('Emily', 'Johnson', 'emily.johnson@example.com', '555666777', 'password789'),
+    ('Anthony', 'Clark', 'anthony.clark@example.com', '123432657', 'password111')
+    ;
 
 -- Wstawienie danych do tabeli client
 INSERT INTO client (user_id)
@@ -14,7 +16,8 @@ VALUES
 -- Wstawienie danych do tabeli vet
 INSERT INTO vet (years_of_experience, user_id)
 VALUES
-    (5, 3); -- Emily Johnson (Weterynarz)
+    (5, 3),
+    (1, 4);
 
 -- Wstawienie danych do tabeli AnimalType
 INSERT INTO Animal_Type (type)
@@ -63,5 +66,19 @@ VALUES
 INSERT INTO article (title, content, date, vet_id)
 VALUES
     ('The Importance of Vaccinations', 'Vaccinations are crucial for your pet’s health...', '2024-10-05', 1),
-    ('How to Care for Senior Pets', 'As pets age, they require different care...', '2024-10-01', 1);
+    ('How to Care for Senior Pets', 'As pets age, they require different care...', '2024-10-01', 1),
+    ('Dental Care for Pets',
+     'Dental health is an often-overlooked aspect of pet care, but it is essential to their overall well-being. Poor dental hygiene can lead not only to bad breath and tooth decay but also to more serious issues such as periodontal disease and infections that can spread to other parts of the body. Regular brushing and dental check-ups can prevent these problems. Your vet may recommend professional cleanings or special dental diets to help maintain your pet’s oral health. Remember, prevention is much easier—and less expensive—than treatment for advanced dental disease.',
+     '2024-09-20',
+     2),
+
+    ('Why Spaying and Neutering is Important',
+     'Spaying and neutering your pet is a responsible decision that offers numerous health benefits. Not only does it help control the pet population, but it can also prevent various health problems, including reproductive cancers and infections. In females, spaying significantly reduces the risk of uterine infections and breast cancer, while neutering males decreases the risk of testicular cancer and can reduce aggressive behaviors. Additionally, spaying and neutering can help minimize certain behavioral issues, making it easier to manage pets in a household environment.',
+     '2024-08-15',
+     2),
+
+    ('Recognizing Early Signs of Illness in Pets',
+     'One of the keys to maintaining your pet’s health is recognizing the early signs of illness. Pets often hide discomfort or pain, so it’s essential to be observant of changes in behavior, appetite, or energy levels. Symptoms such as sudden weight loss, changes in eating or drinking habits, coughing, vomiting, or diarrhea can indicate underlying health issues. Regular vet check-ups are important, but as a pet owner, your role in early detection is crucial. If you notice any changes in your pet’s behavior or physical condition, consult your veterinarian as soon as possible.',
+     '2024-09-30',
+     3);
 

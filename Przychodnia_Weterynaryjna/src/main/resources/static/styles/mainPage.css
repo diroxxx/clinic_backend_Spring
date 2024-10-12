@@ -299,3 +299,6 @@ ul li:hover {
 .article-block{
     display: none;
 }
+.article-content{
+    padding: 20px;
+}

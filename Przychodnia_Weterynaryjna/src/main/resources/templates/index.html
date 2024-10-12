@@ -87,8 +87,8 @@
       <section>
           <h2>Warto przeczytać</h2>
           <ul>
-              <li th:each="article : ${articles}" th:object="${article}">
-                  <p th:text="*{title}"   th:attr="data-title=*{title}" onclick="showArticle(this)"> </p>
+              <li class="title-block" th:id="'article ' + *{title}" th:each="article : ${articles}" th:object="${article}" >
+                  <p  th:text="*{title}"    th:attr="data-title=*{title}" onclick="showArticle(this); changeColorTitle(this)" > </p>
               </li>
 
           </ul>
@@ -97,7 +97,7 @@
 
       <section class="article-block" th:id="*{title}" th:each="article : ${articles}" th:object="${article}"  >
           <h2 th:text="*{title}" class="curly-title">Przykładowy tytuł</h2>
-            <p th:text="*{content}">Przykładowa treść artykułu.</p>
+            <p class="article-content" th:text="*{content}">Przykładowa treść artykułu.</p>
             <p th:text="*{author}">autor</p>
             <p th:text="*{publicationDate}">data</p>
       </section>
