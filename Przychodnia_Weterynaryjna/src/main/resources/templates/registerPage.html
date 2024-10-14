@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
-  <link href="../static/styles/registerPage.css" rel="stylesheet">
+  <link href="../static/styles/registerPage.css" th:href="@{/styles/registerPage.css}" rel="stylesheet">
 </head>
 <body>
 
@@ -15,24 +15,24 @@
 
     <form class="form-register" method="post" action="/home/register" th:object="${registerDto}">
 
-        <div class="login-list">
+        <div class="role-list">
             <input th:field="*{role}" id="client" type="radio" name="role" value="client" class="tochange" required>
             <label for="client" class="label-type">Client</label>
             <input th:field="*{role}" id="vet" type="radio" name="role" value="vet" class="tochange" required>
             <label for="vet" class="label-type">Vet</label>
         </div>
 
-        <label for="firstNameInput">Email</label>
+        <label for="firstNameInput">First name</label>
         <p th:errors="*{firstName}">Errors of someObjectField</p>
         <input th:field="*{firstName}" id="firstNameInput" name="firstNameInput" type="text" placeholder="Enter First Name"  required/>
 
-        <label for="lastNameInput">Email</label>
+        <label for="lastNameInput">Last name</label>
         <p th:errors="*{lastName}">Errors of someObjectField</p>
         <input th:field="*{lastName}" id="lastNameInput" name="lastNameInput" type="text" placeholder="Enter Last Name"  required/>
 
-        <label for="telInput">Email</label>
-        <p th:errors="*{firstName}">Errors of someObjectField</p>
-        <input th:field="*{firstName}" id="telInput" name="telInput" type="number" placeholder="Enter phone number"  required/>
+        <label for="telInput">Phone number</label>
+        <p th:errors="*{phoneNumber}">Errors of someObjectField</p>
+        <input th:field="*{phoneNumber}" id="telInput" name="telInput" type="text" placeholder="Enter phone number"  required/>
 
         <label for="emailInput">Email</label>
         <p th:errors="*{email}">Errors of someObjectField</p>
@@ -42,7 +42,7 @@
         <input th:field="*{password}" id="loginPasswordInput" name="loginPasswordInput" type="password" placeholder="Enter Password" required/>
         <p th:errors="*{password}">Errors of someObjectField</p>
 
-        <button type="submit" id="loginSubmitButton">Register</button>
+        <button type="submit" id="registerBtn">Register</button>
 
         <input type="hidden" id="roleInput" name="role" value="">
 

@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #F4F4F9;
+    color: #33372C;
+    line-height: 1.6;
+}
+
+header {
+    width: 100%;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+    text-shadow: 2px 2px 3px lightgreen;
+    margin-bottom: 30px;
+    background: rgb(85,124,86);
+    background: linear-gradient(0deg, rgba(85,124,86,1) 0%, rgba(51,55,44,1) 88%);
+    box-shadow: 2px 2px 3px #33372C;
+}
+
+.register-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /*height: 60vh;*/
+}
+
+.form-register {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(66, 68, 90, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    width: 100%;
+}
+
+input[type="text"], input[type="password"] {
+    margin-bottom: 15px;
+}
+
+#registerBtn {
+    background-color: #557C56;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+#registerBtn:hover {
+    background-color: #33372C;
+}
+
+.role-list {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 10px;
+}
+
+a {
+    color: #557C56;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+input[type="radio"] {
+    display: none;
+}
+
+
+.label-type {
+    padding: 10px 20px;
+    width: 80px;
+    /*border: 2px solid #557C56;*/
+    border-radius: 5px;
+    background-color: #557C56;
+    color: white;
+    cursor: pointer;
+    margin-right: 10px;
+    text-align: center;
+    transition: background 0.3s ease;
+
+}
+
+.label-type:hover{
+    background-color: #33372C;
+
+}
+
+input[type="radio"]:checked + .label-type {
+    background-color: #33372C;
+}
+

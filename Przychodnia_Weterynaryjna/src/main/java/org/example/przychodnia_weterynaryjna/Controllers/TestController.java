@@ -65,6 +65,13 @@ public class TestController {
         return "login";
     }
 
+    @GetMapping("/register-Page")
+    public String registerView(Model model) {
+        model.addAttribute("registerDto", new RegisterDto());
+
+        return "registerPage";
+    }
+
     @PostMapping("/logIn")
     public String login(Model model, @Valid LogInDto loginDto, BindingResult bindingResult) {
 
@@ -111,6 +118,13 @@ public class TestController {
             List<ObjectError> errors = bindingResult.getAllErrors();
             errors.forEach(err -> System.out.println(err.getDefaultMessage()));
         }
+
+        if (Objects.equals(registerDto.getRole(), "vet")) {
+
+
+
+        }
+
 
         return "vetPage";
     }
