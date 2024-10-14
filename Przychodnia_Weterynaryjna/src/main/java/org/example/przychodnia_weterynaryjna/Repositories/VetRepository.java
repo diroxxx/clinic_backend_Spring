@@ -8,6 +8,7 @@ import java.util.Optional;
 
 public interface VetRepository extends CrudRepository<Vet, Integer> {
 
+    Optional<Vet> findByUserEmailAndUserPassword(String useremail, String password);
 
 
 }

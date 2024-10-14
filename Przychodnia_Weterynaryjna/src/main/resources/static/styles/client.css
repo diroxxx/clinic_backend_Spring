@@ -94,7 +94,7 @@ header {
 .logOut-btn:hover {
     background: #1b1e18;
 }
-/*//end header*/
+/*end header*/
 
 
 /*main layout*/
@@ -185,4 +185,7 @@ input[type="text"], input[type="date"] {
     border-radius: 5px;
 }
 
+.reservation-block{
+    display: none;
+}
 /*form end*/

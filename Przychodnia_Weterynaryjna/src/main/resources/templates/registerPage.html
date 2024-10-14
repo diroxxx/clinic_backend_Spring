@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
@@ -7,9 +7,48 @@
 </head>
 <body>
 
+<header>
+    <h1>Register</h1>
+</header>
 
+<section class="register-section">
 
+    <form class="form-register" method="post" action="/home/register" th:object="${registerDto}">
 
+        <div class="login-list">
+            <input th:field="*{role}" id="client" type="radio" name="role" value="client" class="tochange" required>
+            <label for="client" class="label-type">Client</label>
+            <input th:field="*{role}" id="vet" type="radio" name="role" value="vet" class="tochange" required>
+            <label for="vet" class="label-type">Vet</label>
+        </div>
+
+        <label for="firstNameInput">Email</label>
+        <p th:errors="*{firstName}">Errors of someObjectField</p>
+        <input th:field="*{firstName}" id="firstNameInput" name="firstNameInput" type="text" placeholder="Enter First Name"  required/>
+
+        <label for="lastNameInput">Email</label>
+        <p th:errors="*{lastName}">Errors of someObjectField</p>
+        <input th:field="*{lastName}" id="lastNameInput" name="lastNameInput" type="text" placeholder="Enter Last Name"  required/>
+
+        <label for="telInput">Email</label>
+        <p th:errors="*{firstName}">Errors of someObjectField</p>
+        <input th:field="*{firstName}" id="telInput" name="telInput" type="number" placeholder="Enter phone number"  required/>
+
+        <label for="emailInput">Email</label>
+        <p th:errors="*{email}">Errors of someObjectField</p>
+        <input th:field="*{email}" id="emailInput" name="emailInput" type="email" placeholder="Enter Email"  required/>
+
+        <label for="loginPasswordInput">Password</label>
+        <input th:field="*{password}" id="loginPasswordInput" name="loginPasswordInput" type="password" placeholder="Enter Password" required/>
+        <p th:errors="*{password}">Errors of someObjectField</p>
+
+        <button type="submit" id="loginSubmitButton">Register</button>
+
+        <input type="hidden" id="roleInput" name="role" value="">
+
+    </form>
+
+</section>
 
 </body>
 </html>

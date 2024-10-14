@@ -2,7 +2,7 @@
 <html lang="pl" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <script src="../static/scripts/scripts.js"  th:src="@{/scripts/scripts.js}"></script>
+    <script src="../static/scripts/scriptsMainPage.js" th:src="@{/scripts/scriptsMainPage.js}"></script>
     <link href="../static/styles/mainPage.css" rel="stylesheet" th:href="@{/styles/mainPage.css}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cinzel|Fauna+One">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Space+Mono|Muli">
@@ -17,110 +17,117 @@
             <img class="logo-image" src="/photos/logo.png" th:href="@{/photos/logo.png}" alt="zdjecie weterynarza">
             <h1>Przychodnia <br> weterynaryjna</h1>
         </div>class="footer-icons
-      "
 
       <div class = "btn-header-container">
 
-          <a  class="main-SingIn-btn">Sign in</a>
+          <a th:href="@{/home/}"  class="main-SingIn-btn">Sign in</a>
           <a th:href="@{/home/login}" class="main-logIn-btn">Log in</a>
       </div>
 
   </header>
 
-  <main>
-      <article>
-          <h2>O naszej działalności</h2>
-          <p>Witamy w Przychodni Weterynaryjnej "AnimalCare", miejscu, w którym priorytetem jest zdrowie i dobro Twojego zwierzaka. Jesteśmy zespołem doświadczonych weterynarzy, którzy z pasją podchodzą do opieki nad zwierzętami domowymi. Od lat pomagamy właścicielom psów, kotów, gryzoni i innych pupili w dbaniu o ich zdrowie i dobre samopoczucie.
 
-              Nasza oferta obejmuje pełen zakres usług weterynaryjnych: od rutynowych szczepień i badań profilaktycznych, po skomplikowane zabiegi chirurgiczne i leczenie chorób przewlekłych. Nasz nowoczesny sprzęt diagnostyczny pozwala nam szybko i dokładnie stawiać diagnozy, co przekłada się na skuteczniejsze leczenie.
-
-              Wierzymy, że każda wizyta powinna być komfortowa zarówno dla zwierzaka, jak i jego właściciela. Dlatego stawiamy na indywidualne podejście oraz empatię w kontaktach z naszymi pacjentami. W naszej przychodni znajdziesz także sklep z wysokiej jakości karmą oraz akcesoriami dla zwierząt.
-
-              Oferujemy również usługi z zakresu fizjoterapii oraz porady dietetyczne, by Twój pupil mógł cieszyć się zdrowiem i energią przez długie lata. Nasza klinika jest otwarta 7 dni w tygodniu, a w nagłych przypadkach oferujemy całodobową pomoc.</p>
-      </article>
-
-      <section class="animal-container">
-          <h2>Animals we service</h2>
-          <div class="containerAnimalType" th:each="type : ${animalsType}" >
-              <p class="animalTypeBlock" th:text="${type}"> dog </p>
-          </div>
-
-      </section>
-
-      <section>
-          <h2>Services</h2>
-
-          <table>
-              <thead>
-              <tr>
-                  <th>Name</th>
-                  <th>Price</th>
-              </tr>
-              </thead>
-
-              <tbody>
-              <tr th:each="serType : ${servicesType}" th:object="${serType}">
-                  <td th:text="*{name}">Usg</td>
-                  <td th:text="*{price}">320zł</td>
-
-              </tr>
-
-              </tbody>
-          </table>
-      </section>
-
-<!--      <section>-->
-<!--          <h2>Rezerwacja  Usługi</h2>-->
-<!--          <br>-->
-<!--          <form method="post">-->
-<!--              <label for="typ">Typ usługi:</label>-->
-<!--              <input id="typ" type="text"><br>-->
-<!--              <label for="zwierze">Typ zwierzecia:</label>-->
-<!--              <input id="zwierze" type="text"><br>-->
-<!--              <label for="data">data:</label>-->
-<!--              <input id="data" type="date"><br>-->
-<!--              <button type="submit">Rezerwuj</button>-->
-<!--          </form>-->
-<!--          <a href="client.html" target="_blank"> twoje rezerwacje</a>-->
-<!--      </section>-->
-
-      <section>
-          <h2>Warto przeczytać</h2>
-          <ul>
-              <li class="title-block" th:id="'article ' + *{title}" th:each="article : ${articles}" th:object="${article}" >
-                  <p  th:text="*{title}"    th:attr="data-title=*{title}" onclick="showArticle(this); changeColorTitle(this)" > </p>
-              </li>
-
-          </ul>
-      </section>
-
-
-      <section class="article-block" th:id="*{title}" th:each="article : ${articles}" th:object="${article}"  >
-          <h2 th:text="*{title}" class="curly-title">Przykładowy tytuł</h2>
-            <p class="article-content" th:text="*{content}">Przykładowa treść artykułu.</p>
-            <p th:text="*{author}">autor</p>
-            <p th:text="*{publicationDate}">data</p>
-      </section>
-
+  <main th:replace="~{fragments :: main-Page-Content}">
 
   </main>
 
-<footer>
-    <div class="social-media-block">
-        <p>Social media</p>
-        <a href="" class="footer-icons
-"> <img src="/photos/facebook.png" class="icon-image" alt="facebook icon"></a>
-        <a href="" class="footer-icons
-"> <img src="/photos/instagram.png" class="icon-image" alt="Instagram icon"></a>
-        <a href="" class="footer-icons
-"> <img src="/photos/tiktok.png" class="icon-image" alt="tiktok icon"></a>
-    </div>
 
-    <div class="contact-block">
-        <h3>Kontakt</h3>
-        <p>email: <strong>przychodnia1@wp.pl</strong> </p>
-        <p> tel:  <strong>123-123-123</strong> </p>
-    </div>
+
+
+<!--  <main th:fragment="main-Page-Content">-->
+<!--      <article>-->
+<!--          <h2>O naszej działalności</h2>-->
+<!--          <p>Witamy w Przychodni Weterynaryjnej "AnimalCare", miejscu, w którym priorytetem jest zdrowie i dobro Twojego zwierzaka. Jesteśmy zespołem doświadczonych weterynarzy, którzy z pasją podchodzą do opieki nad zwierzętami domowymi. Od lat pomagamy właścicielom psów, kotów, gryzoni i innych pupili w dbaniu o ich zdrowie i dobre samopoczucie.-->
+
+<!--              Nasza oferta obejmuje pełen zakres usług weterynaryjnych: od rutynowych szczepień i badań profilaktycznych, po skomplikowane zabiegi chirurgiczne i leczenie chorób przewlekłych. Nasz nowoczesny sprzęt diagnostyczny pozwala nam szybko i dokładnie stawiać diagnozy, co przekłada się na skuteczniejsze leczenie.-->
+
+<!--              Wierzymy, że każda wizyta powinna być komfortowa zarówno dla zwierzaka, jak i jego właściciela. Dlatego stawiamy na indywidualne podejście oraz empatię w kontaktach z naszymi pacjentami. W naszej przychodni znajdziesz także sklep z wysokiej jakości karmą oraz akcesoriami dla zwierząt.-->
+
+<!--              Oferujemy również usługi z zakresu fizjoterapii oraz porady dietetyczne, by Twój pupil mógł cieszyć się zdrowiem i energią przez długie lata. Nasza klinika jest otwarta 7 dni w tygodniu, a w nagłych przypadkach oferujemy całodobową pomoc.</p>-->
+<!--      </article>-->
+
+<!--      <section class="animal-container">-->
+<!--          <h2>Animals we service</h2>-->
+<!--          <div class="containerAnimalType" th:each="type : ${animalsType}" >-->
+<!--              <p class="animalTypeBlock" th:text="${type}"> dog </p>-->
+<!--          </div>-->
+
+<!--      </section>-->
+
+<!--      <section>-->
+<!--          <h2>Services</h2>-->
+
+<!--          <table>-->
+<!--              <thead>-->
+<!--              <tr>-->
+<!--                  <th>Name</th>-->
+<!--                  <th>Price</th>-->
+<!--              </tr>-->
+<!--              </thead>-->
+
+<!--              <tbody>-->
+<!--              <tr th:each="serType : ${servicesType}" th:object="${serType}">-->
+<!--                  <td th:text="*{name}">Usg</td>-->
+<!--                  <td th:text="*{price}">320zł</td>-->
+
+<!--              </tr>-->
+
+<!--              </tbody>-->
+<!--          </table>-->
+<!--      </section>-->
+
+<!--&lt;!&ndash;      <section>&ndash;&gt;-->
+<!--&lt;!&ndash;          <h2>Rezerwacja  Usługi</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;          <br>&ndash;&gt;-->
+<!--&lt;!&ndash;          <form method="post">&ndash;&gt;-->
+<!--&lt;!&ndash;              <label for="typ">Typ usługi:</label>&ndash;&gt;-->
+<!--&lt;!&ndash;              <input id="typ" type="text"><br>&ndash;&gt;-->
+<!--&lt;!&ndash;              <label for="zwierze">Typ zwierzecia:</label>&ndash;&gt;-->
+<!--&lt;!&ndash;              <input id="zwierze" type="text"><br>&ndash;&gt;-->
+<!--&lt;!&ndash;              <label for="data">data:</label>&ndash;&gt;-->
+<!--&lt;!&ndash;              <input id="data" type="date"><br>&ndash;&gt;-->
+<!--&lt;!&ndash;              <button type="submit">Rezerwuj</button>&ndash;&gt;-->
+<!--&lt;!&ndash;          </form>&ndash;&gt;-->
+<!--&lt;!&ndash;          <a href="clientPage.html" target="_blank"> twoje rezerwacje</a>&ndash;&gt;-->
+<!--&lt;!&ndash;      </section>&ndash;&gt;-->
+
+<!--      <section>-->
+<!--          <h2>Warto przeczytać</h2>-->
+<!--          <ul>-->
+<!--              <li class="title-block" th:id="'article ' + *{title}" th:each="article : ${articles}" th:object="${article}" >-->
+<!--                  <p  th:text="*{title}"    th:attr="data-title=*{title}" onclick="showArticle(this); changeColorTitle(this)" > </p>-->
+<!--              </li>-->
+
+<!--          </ul>-->
+<!--      </section>-->
+
+
+<!--      <section class="article-block" th:id="*{title}" th:each="article : ${articles}" th:object="${article}"  >-->
+<!--          <h2 th:text="*{title}" class="curly-title">Przykładowy tytuł</h2>-->
+<!--            <p class="article-content" th:text="*{content}">Przykładowa treść artykułu.</p>-->
+<!--            <p th:text="*{author}">autor</p>-->
+<!--            <p th:text="*{publicationDate}">data</p>-->
+<!--      </section>-->
+
+
+<!--  </main>-->
+
+<footer th:fragment="main-footer">
+<!--    <div class="social-media-block">-->
+<!--        <p>Social media</p>-->
+<!--        <a href="" class="footer-icons-->
+<!--"> <img src="/photos/facebook.png" class="icon-image" alt="facebook icon"></a>-->
+<!--        <a href="" class="footer-icons-->
+<!--"> <img src="/photos/instagram.png" class="icon-image" alt="Instagram icon"></a>-->
+<!--        <a href="" class="footer-icons-->
+<!--"> <img src="/photos/tiktok.png" class="icon-image" alt="tiktok icon"></a>-->
+<!--    </div>-->
+
+<!--    <div class="contact-block">-->
+<!--        <h3>Kontakt</h3>-->
+<!--        <p>email: <strong>przychodnia1@wp.pl</strong> </p>-->
+<!--        <p> tel:  <strong>123-123-123</strong> </p>-->
+<!--    </div>-->
 
 </footer>
 </body>

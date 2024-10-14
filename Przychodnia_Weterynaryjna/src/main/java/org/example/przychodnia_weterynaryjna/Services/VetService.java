@@ -1,8 +1,10 @@
 package org.example.przychodnia_weterynaryjna.Services;
 
-import org.example.przychodnia_weterynaryjna.DTOs.VetArticleDto;
 import org.example.przychodnia_weterynaryjna.Repositories.VetRepository;
+import org.example.przychodnia_weterynaryjna.models.Vet;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class VetService {
@@ -13,7 +15,9 @@ public class VetService {
         this.vetRepository = vetRepository;
     }
 
-//    public VetArticleDto getVetArticle(){
-//        return vetRepository.find
-//    }
+    public Optional <Vet> doesVetExists(String email, String password) {
+        return vetRepository.findByUserEmailAndUserPassword(email, password);
+    }
+
+
 }

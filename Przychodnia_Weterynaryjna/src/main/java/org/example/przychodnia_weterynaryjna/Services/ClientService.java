@@ -14,5 +14,8 @@ public class ClientService {
         this.clientRepository = clientRepository;
     }
 
+    public Optional <Client> doesClientExists(String email, String password) {
+        return clientRepository.findByUserEmailAndUserPassword(email, password);
+    }
 
 }

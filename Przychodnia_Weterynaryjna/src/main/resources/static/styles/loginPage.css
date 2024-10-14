@@ -74,13 +74,8 @@ input[type="text"], input[type="password"] {
 
 .login-list {
     display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.login-list li {
-    list-style: none;
-    margin: 0 10px;
+    justify-content: space-evenly;
+    margin-top: 10px;
 }
 
 a {
@@ -93,4 +88,32 @@ a:hover {
     text-decoration: underline;
 }
 
+
+input[type="radio"] {
+    display: none;
+}
+
+
+.label-type {
+    padding: 10px 20px;
+    width: 80px;
+    /*border: 2px solid #557C56;*/
+    border-radius: 5px;
+    background-color: #557C56;
+    color: white;
+    cursor: pointer;
+    margin-right: 10px;
+    text-align: center;
+    transition: background 0.3s ease;
+
+}
+
+.label-type:hover{
+    background-color: #33372C;
+
+}
+
+input[type="radio"]:checked + .label-type {
+    background-color: #33372C;
+}
 

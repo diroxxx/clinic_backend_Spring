@@ -16,23 +16,28 @@
 
 <section class="login-section">
 
-  <form class="formForLogin" method="post">
+  <form class="formForLogin" method="post" action="/home/logIn" th:object="${logInDto}">
 
-    <ul class="login-list">
-      <li> <input type="button" name="klient-type"  value="Klient" class="tochange"> </li>
-      <li> <input type="button" name="doktor-type" value="Doktor" class="tochange"> </li>
-    </ul>
+    <div class="login-list">
+      <input th:field="*{role}" id="client" type="radio" name="role" value="client" class="tochange" required>
+      <label for="client" class="label-type">Client</label>
+      <input th:field="*{role}" id="vet" type="radio" name="role" value="vet" class="tochange" required>
+      <label for="vet" class="label-type">Vet</label>
+    </div>
 
 
-    <label for="emailInput">email</label>
-    <input id="emailInput" name="emailInput" type="email" value="Wprowadz email" />
-    <label for="loginPasswordInput">hasło</label>
-    <input id="loginPasswordInput" name="loginPasswordInput" type="password"  />
+    <label for="emailInput">Email</label>
+    <p th:errors="*{email}">Errors of someObjectField</p>
+    <input th:field="*{email}" id="emailInput" name="emailInput" type="email" placeholder="Enter Email"  required/>
+    <label for="loginPasswordInput">Password</label>
+    <input th:field="*{password}" id="loginPasswordInput" name="loginPasswordInput" type="password" placeholder="Enter Password" required/>
+    <p th:errors="*{password}">Errors of someObjectField</p>
 
+    <a>Create account</a>
+
+    <button type="submit" id="loginSubmitButton">Log in</button>
 
     <input type="hidden" id="roleInput" name="role" value="">
-
-    <button type="submit" id="loginSubmitButton">Zaloguj się</button>
 
   </form>
 

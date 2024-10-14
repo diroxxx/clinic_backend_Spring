@@ -1,23 +1,21 @@
 package org.example.przychodnia_weterynaryjna.Controllers;
 
+import jakarta.validation.Valid;
+import org.example.przychodnia_weterynaryjna.DTOs.LogInDto;
+import org.example.przychodnia_weterynaryjna.DTOs.RegisterDto;
 import org.example.przychodnia_weterynaryjna.DTOs.VetArticleDto;
-import org.example.przychodnia_weterynaryjna.Repositories.AnimalTypeRepository;
-import org.example.przychodnia_weterynaryjna.Repositories.ClientRepository;
 import org.example.przychodnia_weterynaryjna.Services.*;
-import org.example.przychodnia_weterynaryjna.models.Article;
 import org.example.przychodnia_weterynaryjna.models.Client;
 import org.example.przychodnia_weterynaryjna.models.Service;
-import org.springframework.data.repository.support.Repositories;
-import org.springframework.http.ResponseEntity;
+import org.example.przychodnia_weterynaryjna.models.Vet;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Controller
@@ -29,15 +27,20 @@ public class TestController {
     private final AnimalTypeService animalTypeService;
     private final ServiceTypeService serviceTypeService;
     private final ArticleService articleService;
+    private final VetService vetService;
 
-    public TestController (ClientService clientService, AnimalService animalService,
+    public TestController (ClientService clientService,
+                           AnimalService animalService,
                            AnimalTypeService animalTypeService,
-                           ServiceTypeService serviceTypeService, ArticleService articleService) {
+                           ServiceTypeService serviceTypeService,
+                           ArticleService articleService,
+                           VetService vetService) {
         this.clientService = clientService;
         this.animalService = animalService;
         this.animalTypeService = animalTypeService;
         this.serviceTypeService = serviceTypeService;
         this.articleService = articleService;
+        this.vetService = vetService;
     }
 
 
@@ -56,9 +59,64 @@ public class TestController {
     }
 
     @GetMapping("/login")
-    public String loginView() {
+    public String loginView(Model model) {
+        model.addAttribute("logInDto", new LogInDto());
+
         return "login";
     }
 
+    @PostMapping("/logIn")
+    public String login(Model model, @Valid LogInDto loginDto, BindingResult bindingResult) {
+
+        System.out.println(loginDto);
+
+        if (bindingResult.hasErrors()) {
+            List<ObjectError> errors = bindingResult.getAllErrors();
+            errors.forEach(err -> System.out.println(err.getDefaultMessage()));
+        }
+
+        loginDto.setRole(loginDto.getRole().replaceAll(",", ""));
+
+        if (Objects.equals(loginDto.getRole(), "vet")) {
+            System.out.println("vet");
+            Optional<Vet> vet = vetService.doesVetExists(loginDto.getEmail(), loginDto.getPassword());
+
+
+            if (vet.isPresent()) {
+                model.addAttribute("vet", vet.get());
+                return "vetPage";
+            } else {
+                model.addAttribute("error", "Invalid email or password.");
+                return "login";
+            }
+
+        } else {
+            Optional<Client> client = clientService.doesClientExists(loginDto.getEmail(), loginDto.getPassword());
+            System.out.println("client");
+
+            if (client.isPresent()) {
+                model.addAttribute("client", client.get());
+                return "clientPage";
+            } else {
+                model.addAttribute("error", "Invalid email or password.");
+                return "login";
+            }
+        }
+    }
+
+    @PostMapping("/register")
+    public String register(Model model, @Valid RegisterDto registerDto, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            List<ObjectError> errors = bindingResult.getAllErrors();
+            errors.forEach(err -> System.out.println(err.getDefaultMessage()));
+        }
+
+        return "vetPage";
+    }
+
+
+
 
 }
+
