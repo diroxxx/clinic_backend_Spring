@@ -1,6 +1,7 @@
 package org.example.przychodnia_weterynaryjna.Services;
 
 import org.example.przychodnia_weterynaryjna.DTOs.RegisterDto;
+import org.example.przychodnia_weterynaryjna.Repositories.UserRepository;
 import org.example.przychodnia_weterynaryjna.Repositories.VetRepository;
 import org.example.przychodnia_weterynaryjna.models.User;
 import org.example.przychodnia_weterynaryjna.models.Vet;
@@ -21,14 +22,9 @@ public class VetService {
         return vetRepository.findByUserEmailAndUserPassword(email, password);
     }
 
-    public void registerVet(RegisterDto registerDto) {
-        Vet vet = new Vet();
-        vet.setUser(new User(registerDto.getFirstName(),
-                registerDto.getLastName(),
-                registerDto.getEmail(),
-                registerDto.getPhoneNumber(),
-                registerDto.getPassword()));
-
+    public void registerVet(User user) {
+        Vet vet = new Vet(0,user);
+        vetRepository.save(vet);
     }
 
 

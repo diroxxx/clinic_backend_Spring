@@ -7,6 +7,7 @@ import org.example.przychodnia_weterynaryjna.DTOs.VetArticleDto;
 import org.example.przychodnia_weterynaryjna.Services.*;
 import org.example.przychodnia_weterynaryjna.models.Client;
 import org.example.przychodnia_weterynaryjna.models.Service;
+import org.example.przychodnia_weterynaryjna.models.User;
 import org.example.przychodnia_weterynaryjna.models.Vet;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,19 +29,22 @@ public class TestController {
     private final ServiceTypeService serviceTypeService;
     private final ArticleService articleService;
     private final VetService vetService;
+    private final UserService userService;
 
     public TestController (ClientService clientService,
                            AnimalService animalService,
                            AnimalTypeService animalTypeService,
                            ServiceTypeService serviceTypeService,
                            ArticleService articleService,
-                           VetService vetService) {
+                           VetService vetService,
+                           UserService userService) {
         this.clientService = clientService;
         this.animalService = animalService;
         this.animalTypeService = animalTypeService;
         this.serviceTypeService = serviceTypeService;
         this.articleService = articleService;
         this.vetService = vetService;
+        this.userService = userService;
     }
 
 
@@ -119,14 +123,22 @@ public class TestController {
             errors.forEach(err -> System.out.println(err.getDefaultMessage()));
         }
 
+        registerDto.setRole(registerDto.getRole().replaceAll(",", ""));
+
+        User user = userService.registerUser(new User(registerDto.getFirstName(),
+                registerDto.getLastName(),
+                registerDto.getEmail(),
+                registerDto.getPhoneNumber(),
+                registerDto.getPassword()));
+//        System.out.println(user);
         if (Objects.equals(registerDto.getRole(), "vet")) {
-
-
-
+//            System.out.println("vet " + registerDto.getRole() );
+            vetService.registerVet(user);
+        } else {
+//            System.out.println("client " + registerDto.getRole() );
+            clientService.registerClient(user);
         }
-
-
-        return "vetPage";
+        return "redirect:login";
     }
 
 
