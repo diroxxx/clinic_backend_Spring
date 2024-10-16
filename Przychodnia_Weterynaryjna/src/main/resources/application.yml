@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/wet
+    url: jdbc:mysql://localhost:3306/clinic
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: user
     password: dominik04
