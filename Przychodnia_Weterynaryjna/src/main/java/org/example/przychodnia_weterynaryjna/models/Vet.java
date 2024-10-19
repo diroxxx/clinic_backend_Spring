@@ -15,7 +15,6 @@ public class Vet {
     private int id;
 
     @Column(name = "years_of_experience")
-    @Size(min = 0, max = 2)
     private int yearsOfExperience;
 
     @OneToOne
@@ -32,8 +31,8 @@ public class Vet {
     public Vet() {
     }
 
-    public Vet(int yearsOfExperience, User user) {
-        this.yearsOfExperience = yearsOfExperience;
+    public Vet( User user) {
+        this.yearsOfExperience = 0;
         this.user = user;
     }
 
@@ -45,12 +44,12 @@ public class Vet {
         this.id = id;
     }
 
-    @Size(max = 2)
+
     public int getYearsOfExperience() {
         return yearsOfExperience;
     }
 
-    public void setYearsOfExperience(@Size(max = 2) int yearsOfExperience) {
+    public void setYearsOfExperience(int yearsOfExperience) {
         this.yearsOfExperience = yearsOfExperience;
     }
 

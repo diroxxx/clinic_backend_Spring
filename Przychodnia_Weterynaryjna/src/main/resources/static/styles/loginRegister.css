@@ -1,38 +1,81 @@
 * {
-    margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    margin: 0;
+    /*box-sizing: border-box;*/
+
 }
 
 body {
     background-color: #F4F4F9;
     color: #33372C;
     line-height: 1.6;
+    font-family: 'Fauna One', serif;
+
+}
+h1, h2{
+    /*font-family: "Space Mono", monospace;*/
+    font-family: Cinzel, serif;
+
+}
+h2 {
+    border-bottom: 3px #33372C solid;
+
+}
+p, label {
+    /*font-weight: bold;*/
+    font-size: 1.2em;
+}
+p {
+    color: red;
+
 }
 
+/*header*/
 header {
-    width: 100%;
-    padding: 20px;
-    color: white;
-    text-align: center;
-    font-size: 2rem;
-    text-shadow: 2px 2px 3px lightgreen;
-    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     background: rgb(85,124,86);
     background: linear-gradient(0deg, rgba(85,124,86,1) 0%, rgba(51,55,44,1) 88%);
     box-shadow: 2px 2px 3px #33372C;
+    /*justify-content: flex-start;*/
+    /*height: 14vh;*/
+    /*padding: 10px;*/
+
+}
+.logo-header {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
 }
 
-.login-section {
+.logo-image {
+    height: 100px;
+    margin-right: 15px;
+}
+
+h1 {
+    font-size: 2rem;
+    color: white;
+    letter-spacing: 5px;
+
+}
+
+
+/*end of header*/
+/*login section*/
+.form-section {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 60vh;
+    /*height: 60vh;*/
+    margin-top: 100px;
+
 }
 
-.formForLogin {
+.form-L-R {
     width: 100%;
     max-width: 400px;
     padding: 20px;
@@ -41,22 +84,22 @@ header {
     box-shadow: 0px 4px 10px rgba(66, 68, 90, 0.1);
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
 }
 
 input {
-    padding: 10px;
+    padding: 7px;
     border-radius: 5px;
     border: 1px solid #ccc;
     font-size: 1rem;
-    width: 100%;
+    /*width: 100%;*/
 }
 
-input[type="text"], input[type="password"] {
-    margin-bottom: 15px;
+input[type="text"] {
+    /*margin-bottom: 15px;*/
 }
 
-#loginSubmitButton {
+.submitBtn {
     background-color: #557C56;
     color: white;
     padding: 10px;
@@ -68,11 +111,11 @@ input[type="text"], input[type="password"] {
     transition: background 0.3s ease;
 }
 
-#loginSubmitButton:hover {
+.submitBtn:hover {
     background-color: #33372C;
 }
 
-.login-list {
+.role-list {
     display: flex;
     justify-content: space-evenly;
     margin-top: 10px;
@@ -90,7 +133,11 @@ a:hover {
 
 
 input[type="radio"] {
-    display: none;
+    /*display: none;*/
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
 

@@ -12,7 +12,7 @@ import java.util.Optional;
 @Service
 public class VetService {
 
-    private VetRepository vetRepository;
+    private final VetRepository vetRepository;
 
     public VetService(VetRepository vetRepository) {
         this.vetRepository = vetRepository;
@@ -23,7 +23,7 @@ public class VetService {
     }
 
     public void registerVet(User user) {
-        Vet vet = new Vet(0,user);
+        Vet vet = new Vet(user);
         vetRepository.save(vet);
     }
 

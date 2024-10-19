@@ -15,8 +15,8 @@
 
         <div class="logo-header">
             <img class="logo-image" src="/photos/logo.png" th:href="@{/photos/logo.png}" alt="zdjecie weterynarza">
-            <h1>Przychodnia <br> weterynaryjna</h1>
-        </div>class="footer-icons
+            <h1>Veterinary <br> Clinic</h1>
+        </div>
 
       <div class = "btn-header-container">
 
@@ -112,23 +112,7 @@
 
 <!--  </main>-->
 
-<footer th:fragment="main-footer">
-<!--    <div class="social-media-block">-->
-<!--        <p>Social media</p>-->
-<!--        <a href="" class="footer-icons-->
-<!--"> <img src="/photos/facebook.png" class="icon-image" alt="facebook icon"></a>-->
-<!--        <a href="" class="footer-icons-->
-<!--"> <img src="/photos/instagram.png" class="icon-image" alt="Instagram icon"></a>-->
-<!--        <a href="" class="footer-icons-->
-<!--"> <img src="/photos/tiktok.png" class="icon-image" alt="tiktok icon"></a>-->
-<!--    </div>-->
-
-<!--    <div class="contact-block">-->
-<!--        <h3>Kontakt</h3>-->
-<!--        <p>email: <strong>przychodnia1@wp.pl</strong> </p>-->
-<!--        <p> tel:  <strong>123-123-123</strong> </p>-->
-<!--    </div>-->
-
+<footer th:replace="~{fragments :: main-footer}">
 </footer>
 </body>
 </html>

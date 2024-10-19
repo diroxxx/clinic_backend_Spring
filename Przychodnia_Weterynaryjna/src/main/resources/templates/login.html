@@ -2,42 +2,46 @@
 <html lang="pl" xmlns:th="http://www.thymeleaf.org" >
 <head>
   <meta charset="UTF-8">
-<!--  <link href="../static/styles/loginPage.css" th:href="@{/styles/login.css}" rel="stylesheet">-->
-  <link rel="stylesheet" href="../static/styles/loginPage.css"  th:href="@{/styles/loginPage.css}">
+<!--  <link href="../static/styles/loginRegister.css" th:href="@{/styles/login.css}" rel="stylesheet">-->
+  <link rel="stylesheet" href="../static/styles/loginRegister.css" th:href="@{/styles/loginRegister.css}">
   <title>Login</title>
 </head>
 <body>
 <header>
 
-  <h1> Logowanie do przychodni weterynaryjnej </h1>
-
+  <div class="logo-header">
+    <img class="logo-image" src="/photos/logo.png" th:href="@{/photos/logo.png}" alt="zdjecie weterynarza">
+    <h1>Veterinary <br> Clinic</h1>
+  </div>
+  <h1>Login</h1>
 </header>
 
 
-<section class="login-section">
+<section class="form-section">
 
-  <form class="formForLogin" method="post" action="/home/logIn" th:object="${logInDto}">
+  <form class="form-L-R" method="post" action="/home/logIn" th:object="${logInDto}">
 
-    <div class="login-list">
+    <div class="role-list">
       <input th:field="*{role}" id="client" type="radio" name="role" value="client" class="tochange" required>
       <label for="client" class="label-type">Client</label>
       <input th:field="*{role}" id="vet" type="radio" name="role" value="vet" class="tochange" required>
       <label for="vet" class="label-type">Vet</label>
+      <p th:errors="*{role}">Errors of someObjectField</p>
+
     </div>
 
 
     <label for="emailInput">Email</label>
-    <p th:errors="*{email}">Errors of someObjectField</p>
     <input th:field="*{email}" id="emailInput" name="emailInput" type="email" placeholder="Enter Email"  required/>
+    <p th:errors="*{email}">Errors</p>
+
     <label for="loginPasswordInput">Password</label>
     <input th:field="*{password}" id="loginPasswordInput" name="loginPasswordInput" type="password" placeholder="Enter Password" required/>
-    <p th:errors="*{password}">Errors of someObjectField</p>
+    <p th:errors="*{password}">Errors</p>
 
-    <a>Create account</a>
+    <a th:href="@{/home/register-Page}">Create account</a>
 
-    <button type="submit" id="loginSubmitButton">Log in</button>
-
-    <input type="hidden" id="roleInput" name="role" value="">
+    <button class="submitBtn" type="submit" id="loginSubmitBtn">Log in</button>
 
   </form>
 

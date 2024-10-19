@@ -3,48 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
+  <link href="../static/styles/loginRegister.css" th:href="@{/styles/loginRegister.css}" rel="stylesheet">
   <link href="../static/styles/registerPage.css" th:href="@{/styles/registerPage.css}" rel="stylesheet">
 </head>
 <body>
 
 <header>
-    <h1>Register</h1>
+    <div class="logo-header">
+        <img class="logo-image" src="/photos/logo.png" th:href="@{/photos/logo.png}" alt="zdjecie weterynarza">
+        <h1>Veterinary <br> Clinic</h1>
+    </div>
+    <h1>Registration</h1>
 </header>
 
-<section class="register-section">
+<section class="form-section">
 
-    <form class="form-register" method="post" action="/home/register" th:object="${registerDto}">
+    <form class="form-L-R" method="post" action="/home/register" th:object="${registerDto}">
 
         <div class="role-list">
             <input th:field="*{role}" id="client" type="radio" name="role" value="client" class="tochange" required>
             <label for="client" class="label-type">Client</label>
             <input th:field="*{role}" id="vet" type="radio" name="role" value="vet" class="tochange" required>
             <label for="vet" class="label-type">Vet</label>
+            <p th:errors="*{role}">Errors of someObjectField</p>
+
         </div>
 
         <label for="firstNameInput">First name</label>
-        <p th:errors="*{firstName}">Errors of someObjectField</p>
         <input th:field="*{firstName}" id="firstNameInput" name="firstNameInput" type="text" placeholder="Enter First Name"  required/>
+        <p th:errors="*{firstName}">Errors of someObjectField</p>
 
         <label for="lastNameInput">Last name</label>
-        <p th:errors="*{lastName}">Errors of someObjectField</p>
         <input th:field="*{lastName}" id="lastNameInput" name="lastNameInput" type="text" placeholder="Enter Last Name"  required/>
+        <p th:errors="*{lastName}">Errors of someObjectField</p>
 
         <label for="telInput">Phone number</label>
-        <p th:errors="*{phoneNumber}">Errors of someObjectField</p>
         <input th:field="*{phoneNumber}" id="telInput" name="telInput" type="text" placeholder="Enter phone number"  required/>
+        <p th:errors="*{phoneNumber}">Errors of someObjectField</p>
 
         <label for="emailInput">Email</label>
-        <p th:errors="*{email}">Errors of someObjectField</p>
         <input th:field="*{email}" id="emailInput" name="emailInput" type="email" placeholder="Enter Email"  required/>
+        <p th:errors="*{email}">Errors of someObjectField</p>
 
         <label for="loginPasswordInput">Password</label>
         <input th:field="*{password}" id="loginPasswordInput" name="loginPasswordInput" type="password" placeholder="Enter Password" required/>
         <p th:errors="*{password}">Errors of someObjectField</p>
 
-        <button type="submit" id="registerBtn">Register</button>
-
-        <input type="hidden" id="roleInput" name="role" value="">
+        <button class="submitBtn" type="submit" id="registerBtn">Register</button>
 
     </form>
 

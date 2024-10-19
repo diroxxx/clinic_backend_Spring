@@ -79,14 +79,13 @@ public class TestController {
     @PostMapping("/logIn")
     public String login(Model model, @Valid LogInDto loginDto, BindingResult bindingResult) {
 
+        loginDto.setRole(loginDto.getRole().replaceAll(",", ""));
         System.out.println(loginDto);
 
         if (bindingResult.hasErrors()) {
-            List<ObjectError> errors = bindingResult.getAllErrors();
-            errors.forEach(err -> System.out.println(err.getDefaultMessage()));
+            return "login";
         }
 
-        loginDto.setRole(loginDto.getRole().replaceAll(",", ""));
 
         if (Objects.equals(loginDto.getRole(), "vet")) {
             System.out.println("vet");
@@ -97,7 +96,9 @@ public class TestController {
                 model.addAttribute("vet", vet.get());
                 return "vetPage";
             } else {
-                model.addAttribute("error", "Invalid email or password.");
+                bindingResult.rejectValue("password", "error.logInDto", "Invalid email or password");
+
+//                model.addAttribute("error", "Invalid email or password.");
                 return "login";
             }
 
@@ -109,23 +110,24 @@ public class TestController {
                 model.addAttribute("client", client.get());
                 return "clientPage";
             } else {
-                model.addAttribute("error", "Invalid email or password.");
+//                model.addAttribute("error", "Invalid email or password.");
+                bindingResult.rejectValue("password", "error.logInDto", "Invalid email or password");
+
                 return "login";
             }
         }
     }
 
     @PostMapping("/register")
-    public String register(Model model, @Valid RegisterDto registerDto, BindingResult bindingResult) {
+    public String register( @Valid RegisterDto registerDto, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
-            List<ObjectError> errors = bindingResult.getAllErrors();
-            errors.forEach(err -> System.out.println(err.getDefaultMessage()));
+            return "registerPage";
         }
-
         registerDto.setRole(registerDto.getRole().replaceAll(",", ""));
 
-        User user = userService.registerUser(new User(registerDto.getFirstName(),
+        User user = userService.registerUser(new User(
+                registerDto.getFirstName(),
                 registerDto.getLastName(),
                 registerDto.getEmail(),
                 registerDto.getPhoneNumber(),
@@ -136,12 +138,10 @@ public class TestController {
             vetService.registerVet(user);
         } else {
 //            System.out.println("client " + registerDto.getRole() );
-            clientService.registerClient(user);
+           clientService.registerClient(user);
         }
         return "redirect:login";
     }
-
-
 
 
 }
