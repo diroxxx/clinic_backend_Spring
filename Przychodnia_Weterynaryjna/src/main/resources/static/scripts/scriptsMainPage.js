@@ -24,3 +24,4 @@ function changeColorTitle(data) {
     // titleToChange.style.color = '#557C56';
 
 }
+

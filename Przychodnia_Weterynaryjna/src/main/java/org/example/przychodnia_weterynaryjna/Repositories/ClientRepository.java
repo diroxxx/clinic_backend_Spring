@@ -9,5 +9,4 @@ import java.util.Optional;
 public interface ClientRepository extends CrudRepository<Client, Integer> {
 
     Optional<Client> findByUserEmailAndUserPassword(String useremail, String password);
-
 }

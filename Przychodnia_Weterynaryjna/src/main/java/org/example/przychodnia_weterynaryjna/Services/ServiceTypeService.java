@@ -5,14 +5,19 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ServiceTypeService {
 
-    private ServiceRepository serviceRepository;
+    private final ServiceRepository serviceRepository;
 
     public ServiceTypeService(ServiceRepository serviceRepository) {
         this.serviceRepository = serviceRepository;
+    }
+
+    public Optional<org.example.przychodnia_weterynaryjna.models.Service> getServiceById(int id) {
+        return serviceRepository.findById(id);
     }
 
 

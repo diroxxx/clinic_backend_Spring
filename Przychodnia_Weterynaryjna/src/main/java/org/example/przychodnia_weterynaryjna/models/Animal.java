@@ -13,7 +13,7 @@ public class Animal {
     private int id;
 
     @Size(max = 50)
-    @Null
+//    @Null
     private String name;
 
 

@@ -1,18 +1,15 @@
 package org.example.przychodnia_weterynaryjna.Controllers;
 
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.example.przychodnia_weterynaryjna.DTOs.LogInDto;
 import org.example.przychodnia_weterynaryjna.DTOs.RegisterDto;
 import org.example.przychodnia_weterynaryjna.DTOs.VetArticleDto;
 import org.example.przychodnia_weterynaryjna.Services.*;
-import org.example.przychodnia_weterynaryjna.models.Client;
-import org.example.przychodnia_weterynaryjna.models.Service;
-import org.example.przychodnia_weterynaryjna.models.User;
-import org.example.przychodnia_weterynaryjna.models.Vet;
+import org.example.przychodnia_weterynaryjna.models.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,7 +18,7 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/home")
-public class TestController {
+public class HomeController {
 
     private final ClientService clientService;
     private final AnimalService animalService;
@@ -31,13 +28,13 @@ public class TestController {
     private final VetService vetService;
     private final UserService userService;
 
-    public TestController (ClientService clientService,
-                           AnimalService animalService,
-                           AnimalTypeService animalTypeService,
-                           ServiceTypeService serviceTypeService,
-                           ArticleService articleService,
-                           VetService vetService,
-                           UserService userService) {
+    public HomeController(ClientService clientService,
+                          AnimalService animalService,
+                          AnimalTypeService animalTypeService,
+                          ServiceTypeService serviceTypeService,
+                          ArticleService articleService,
+                          VetService vetService,
+                          UserService userService) {
         this.clientService = clientService;
         this.animalService = animalService;
         this.animalTypeService = animalTypeService;
@@ -62,7 +59,7 @@ public class TestController {
         return "index";
     }
 
-    @GetMapping("/login")
+    @GetMapping("/login-Site")
     public String loginView(Model model) {
         model.addAttribute("logInDto", new LogInDto());
 
@@ -77,7 +74,7 @@ public class TestController {
     }
 
     @PostMapping("/logIn")
-    public String login(Model model, @Valid LogInDto loginDto, BindingResult bindingResult) {
+    public String login(Model model, @Valid LogInDto loginDto, BindingResult bindingResult, HttpSession session) {
 
         loginDto.setRole(loginDto.getRole().replaceAll(",", ""));
         System.out.println(loginDto);
@@ -107,8 +104,9 @@ public class TestController {
             System.out.println("client");
 
             if (client.isPresent()) {
-                model.addAttribute("client", client.get());
-                return "clientPage";
+                session.setAttribute("client", client.get());
+                return "redirect:/client/Site";
+
             } else {
 //                model.addAttribute("error", "Invalid email or password.");
                 bindingResult.rejectValue("password", "error.logInDto", "Invalid email or password");

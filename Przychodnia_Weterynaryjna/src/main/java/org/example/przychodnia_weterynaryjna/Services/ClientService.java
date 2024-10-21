@@ -15,9 +15,15 @@ public class ClientService {
         this.clientRepository = clientRepository;
     }
 
+    public Optional<Client> getClientById(int id) {
+        return clientRepository.findById(id);
+    }
+
     public Optional <Client> doesClientExists(String email, String password) {
         return clientRepository.findByUserEmailAndUserPassword(email, password);
     }
+
+
 
     public void registerClient(User user) {
         Client client = new Client(user);

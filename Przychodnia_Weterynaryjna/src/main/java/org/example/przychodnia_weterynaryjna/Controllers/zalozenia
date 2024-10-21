@@ -1,0 +1,8 @@
+vet:
+    -moze ustawiac limit wizyt dziennych w wybrane dni.
+    -moze anulowac wizyty z komentarzem.
+    -dodawanie artykułów.
+    -zmiana danych.
+    -wyswietla aktualne rezerwacje.
+    -wyswietla historie rezerwacji.
+    -

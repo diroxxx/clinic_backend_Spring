@@ -42,4 +42,83 @@ public class Appointment {
     @JoinColumn(name = "animal_id")
     private Animal animal;
 
+
+    public Appointment(Animal animal, Client client, Service service, Vet vet, AppointmentStatus status, String description, LocalDateTime appointmentDate) {
+        this.animal = animal;
+        this.client = client;
+        this.service = service;
+        this.vet = vet;
+        this.status = status;
+        this.description = description;
+        this.appointmentDate = appointmentDate;
+    }
+
+    public Appointment() {
+
+    }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getAppointmentDate() {
+        return appointmentDate;
+    }
+
+    public void setAppointmentDate(LocalDateTime appointmentDate) {
+        this.appointmentDate = appointmentDate;
+    }
+
+    public @Size(max = 500) String getDescription() {
+        return description;
+    }
+
+    public void setDescription(@Size(max = 500) String description) {
+        this.description = description;
+    }
+
+    public AppointmentStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(AppointmentStatus status) {
+        this.status = status;
+    }
+
+    public Vet getVet() {
+        return vet;
+    }
+
+    public void setVet(Vet vet) {
+        this.vet = vet;
+    }
+
+    public Service getService() {
+        return service;
+    }
+
+    public void setService(Service service) {
+        this.service = service;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public Animal getAnimal() {
+        return animal;
+    }
+
+    public void setAnimal(Animal animal) {
+        this.animal = animal;
+    }
 }

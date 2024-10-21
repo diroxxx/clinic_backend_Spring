@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS article (
 CREATE TABLE IF NOT EXISTS Appointment (
                              id int NOT NULL AUTO_INCREMENT,
                              ap_date datetime NOT NULL,
-                             description varchar(500) NULL ,
+                             description varchar(500),
                              status ENUM('scheduled', 'completed', 'canceled') NOT NULL,
                              vet_id int NOT NULL,
                              service_id int NOT NULL,

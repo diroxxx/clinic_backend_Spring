@@ -26,7 +26,6 @@ public class User {
     @Email
     @Column(unique = true)
     @Size(min = 2, max = 50)
-
     private String email;
 
     @Size(min = 9, max = 9)

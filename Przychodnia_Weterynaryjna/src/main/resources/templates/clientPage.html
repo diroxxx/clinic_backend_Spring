@@ -6,6 +6,7 @@
     <link href="../static/styles/client.css" th:href="@{/styles/client.css}" rel="stylesheet">
 
     <script src="../static/scripts/scriptsMainPage.js" th:src="@{/scripts/scriptsMainPage.js}"></script>
+    <script src="../static/scripts/clientScripts.js" th:src="@{/scripts/clientScripts.js}"></script>
     <link href="../static/styles/mainPage.css" rel="stylesheet" th:href="@{/styles/mainPage.css}">
 </head>
 
@@ -14,43 +15,72 @@
 <header>
     <div class="logo-header">
         <img class="logo-image" src="/photos/logo.png" th:href="@{/photos/logo.png}" alt="zdjecie weterynarza">
-        <h1>Przychodnia <br> weterynaryjna</h1>
+        <h1>Veterinary<br>Clinic</h1>
     </div>
 
     <div class = "btn-header-container">
-        <a th:href="@{/home}" class="logOut-btn">Log out</a>
+        <a th:href="@{/logout}" class="logOut-btn">Log out</a>
     </div>
 </header>
 
-<main>
+<div class="main-container">
 
     <nav>
         <ul>
-            <li>History of reservation</li>
-            <li>Book a reservation</li>
+            <li class="history-app-client" onclick="showClientOption('history-app-client')" >History of appointments</li>
+            <li class="book-app-client" onclick="showClientOption('book-app-client')">Book a reservation</li>
+            <li class="account-info-client" onclick="showClientOption('account-info-client')">Account info</li>
+            <li class="main-info" onclick="showClientOption('main-info')">main info</li>
+
         </ul>
     </nav>
 
-
-
-
-                <section class="reservation-block">
+    <section class="info-block" id="book-app-client-sec">
                   <h2>Rezerwacja  Usługi</h2>
                   <br>
-                  <form method="post">
-                      <label for="typ">Typ usługi:</label>
-                      <input id="typ" type="text"><br>
-                      <label for="zwierze">Typ zwierzecia:</label>
-                      <input id="zwierze" type="text"><br>
+                  <form method="post" action="/client/reservation" th:object="${appointmentBook}">
+
+                      <label for="vet">Vet:</label>
+                      <select id="vet" th:field="*{vetId}">
+                          <option th:each="vet : ${vets}"   th:value="${vet.getId()}" th:text="${vet.user.firstName + ' ' + vet.user.lastName}" >Vet</option>
+                      </select>
+
+
+                      <label for="serviceType">Type of service:</label>
+                      <select id="serviceType" th:field="*{serviceId}">
+                          <option th:each="serviceType : ${servicesType}"   th:value="${serviceType.getId()}" th:text="${serviceType.getName()}" >Service type</option>
+                      </select>
+
+                      <label for="ourAnimal">Chose our animal:</label>
+                      <select id="ourAnimal"  th:field="*{animalId}">
+                          <option th:each="animal : ${userAnimals}"   th:value="${animal.getId()}" th:text="${animal.getName()}" >Animal</option>
+                      </select>
+
                       <label for="data">data:</label>
-                      <input id="data" type="date"><br>
+                      <input th:field="*{appointmentDate}" id="data" type="datetime-local" required><br>
+
+                      <label for="desc">Description:</label>
+                      <input th:field="*{description}" id="desc" type="text" placeholder="Enter description"><br>
+
+                      <label>
+                          <input th:field="*{clientId}" type="text" th:value="${client.getId()}" hidden>
+                      </label>
+<!--                        <p th:text="${client.toString()}">fgfg</p>-->
+
                       <button type="submit">Rezerwuj</button>
                   </form>
-              </section>
-</main>
-<main th:replace="~{fragments :: main-Page-Content}"></main>
+    </section>
+
+    <section class="info-block" id="history-app-client-sec">
+
+    </section>
 
 
+</div>
+
+<!--    <section id="main-info-sec" class="info-block" th:replace="~{fragments :: main-Page-Content}"></section>-->
+
+<footer th:replace="~{fragments :: main-footer}"></footer>
 
 
 
