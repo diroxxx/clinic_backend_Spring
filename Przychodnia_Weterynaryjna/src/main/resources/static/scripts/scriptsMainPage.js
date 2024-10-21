@@ -25,3 +25,18 @@ function changeColorTitle(data) {
 
 }
 
+    document.addEventListener("DOMContentLoaded", function() {
+        let toast = document.getElementById("toast");
+
+        // Sprawdzenie, czy dymek istnieje (czyli czy wiadomość jest dostępna)
+        if (toast && toast.textContent.trim() !== "") {
+            toast.classList.add("show"); // Wyświetl dymek
+
+            // Schowaj dymek po 5 sekundach
+            setTimeout(function() {
+                toast.style.animation = "fadeOut 1s forwards"; // Uruchom animację wygaszania
+            }, 3000); // 5000 ms = 5 sekund
+        }
+    });
+
+

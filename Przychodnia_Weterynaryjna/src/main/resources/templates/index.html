@@ -26,9 +26,8 @@
 
   </header>
 
-  <div th:if="${message}">
-      <p th:text="${message}"></p>
-  </div>
+  <div id="toast" th:if="${message}" class="toast" th:text="${message}"></div>
+
 
 
   <main th:replace="~{fragments :: main-Page-Content}">

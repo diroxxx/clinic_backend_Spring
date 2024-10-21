@@ -302,3 +302,44 @@ ul li:hover {
 .article-content{
     padding: 20px;
 }
+
+.toast {
+    position: fixed;
+    top: 20px; /* Odległość od górnej krawędzi */
+    left: 50%; /* Wyrównanie do środka w poziomie */
+    transform: translateX(-50%); /* Przesunięcie do środka poziomo */
+    background-color: #28a745; /* Zielone tło */
+    color: white; /* Kolor tekstu */
+    padding: 15px; /* Wewnętrzne odstępy */
+    border-radius: 5px; /* Zaokrąglone rogi */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Cień */
+    display: none; /* Domyślnie ukryty */
+    z-index: 9999; /* Wysoki z-index, aby był nad innymi elementami */
+    opacity: 0; /* Domyślna przezroczystość */
+    transition: opacity 0.3s ease-in-out; /* Animacja przejścia */
+}
+.toast.show {
+    display: block; /* Pokazanie dymku */
+    opacity: 1; /* Ustawienie pełnej przezroczystości */
+}
+@keyframes fadeOut {
+    0% {
+        opacity: 1; /* W pełni widoczny */
+    }
+    25%{
+        opacity: 0.7;
+    }
+    50%{
+        opacity: 0.5;
+    }
+    75%{
+        opacity: 0.25;
+    }
+    99% {
+        opacity: 0.1; /* Wciąż widoczny przed zakończeniem */
+    }
+    100% {
+        opacity: 0; /* Całkowicie przezroczysty */
+        display: none; /* Ukrycie dymku */
+    }
+}

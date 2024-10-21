@@ -49,7 +49,6 @@ public class ClientController {
         if (client == null) {
             return "redirect:/login";
         }
-        System.out.println(client.toString());
 
         model.addAttribute("client", client);
         model.addAttribute("appointmentBook", new AppointmentDto());
@@ -77,9 +76,6 @@ public class ClientController {
         System.out.println(appointmentDto.getClientId());
 
         Appointment appointment = new Appointment();
-
-//        appointment.setClient(clientService.getClientById(appointmentDto.getClientId())
-//                .orElseThrow(() -> new IllegalArgumentException("Invalid client ID!")));
 
         appointment.setClient(clientService.getClientById(1).get());
         appointment.setAnimal(animalService.getAnimalById(appointmentDto.getAnimalId())

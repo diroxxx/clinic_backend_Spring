@@ -19,7 +19,7 @@ public class LogOutController {
     public String logout(RedirectAttributes redirectAttributes, HttpSession session) {
         session.removeAttribute("client");
 
-        redirectAttributes.addFlashAttribute("message", "Zostałeś pomyślnie wylogowany.");
+        redirectAttributes.addFlashAttribute("message", "Log Out Successful");
 
         return "redirect:/home"; // Przekierowanie do strony logowania po wylogowaniu
 
