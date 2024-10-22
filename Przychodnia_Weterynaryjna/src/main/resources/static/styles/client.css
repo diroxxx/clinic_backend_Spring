@@ -347,6 +347,88 @@ input[type="text"], input[type="date"] {
     /*padding: 50px;*/
     margin-left: 15%;
 }
+
+
+
+.info-block {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+.info-block h2 {
+    text-align: center;
+    font-size: 24px;
+    color: #33372C;
+    margin-bottom: 20px;
+}
+
+/* Style dla formularza */
+.info-block form {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-block label {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #33372C;
+}
+
+.info-block select,
+.info-block input[type="datetime-local"],
+.info-block input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #fff;
+}
+
+.info-block select:focus,
+.info-block input[type="datetime-local"]:focus,
+.info-block input[type="text"]:focus {
+    border-color: #557C56;
+    outline: none;
+    box-shadow: 0 0 5px rgba(85, 124, 86, 0.5);
+}
+
+/* Przyciski */
+.info-block button[type="submit"] {
+    background-color: #557C56;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.info-block button[type="submit"]:hover {
+    background-color: #466a4b;
+}
+
+/* Marginesy i odstępy między elementami */
+.info-block input,
+.info-block select {
+    margin-bottom: 20px;
+}
+
+.info-block input[type="datetime-local"],
+.info-block input[type="text"] {
+    margin-bottom: 20px;
+}
+
+
+
  /*Form end */
 
 

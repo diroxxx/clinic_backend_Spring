@@ -31,6 +31,7 @@
             <li class="book-app-client" onclick="showClientOption('book-app-client')">Book a reservation</li>
             <li class="account-info-client" onclick="showClientOption('account-info-client')">Account info</li>
             <li class="main-info" onclick="showClientOption('main-info')">main info</li>
+            <li class="add-your-animal" onclick="showClientOption('add-your-animal')">add your animal</li>
 
         </ul>
     </nav>
@@ -65,7 +66,6 @@
                       <label>
                           <input th:field="*{clientId}" type="text" th:value="${client.getId()}" hidden>
                       </label>
-<!--                        <p th:text="${client.toString()}">fgfg</p>-->
 
                       <button type="submit">Rezerwuj</button>
                   </form>
@@ -73,6 +73,15 @@
 
     <section class="info-block" id="history-app-client-sec">
 
+    </section>
+
+    <section class="info-block" id="add-your-animal-sec">
+        <h2>Add Your pet</h2>
+
+        <form method="post" action="/client/registerAnimal" th:object="${animalRegister}">
+
+
+        </form>
     </section>
 
 

@@ -1,6 +1,7 @@
 package org.example.przychodnia_weterynaryjna.Controllers;
 
 import jakarta.servlet.http.HttpSession;
+import org.example.przychodnia_weterynaryjna.DTOs.AnimalRegisterDto;
 import org.example.przychodnia_weterynaryjna.DTOs.AppointmentDto;
 import org.example.przychodnia_weterynaryjna.Services.*;
 import org.example.przychodnia_weterynaryjna.models.*;
@@ -52,6 +53,7 @@ public class ClientController {
 
         model.addAttribute("client", client);
         model.addAttribute("appointmentBook", new AppointmentDto());
+        model.addAttribute("animalRegister", new AnimalRegisterDto());
 
         List<String> animalsTypeList = animalTypeService.getAllAnimalTypes();
         model.addAttribute("animalsType",animalsTypeList);
@@ -92,6 +94,11 @@ public class ClientController {
 
         return "redirect:/client/Site";
     }
+    @PostMapping("/registerAnimal")
+    public String registerAnimal(AnimalRegisterDto animalRegisterDto) {
+        return "redirect:/client/Site";
+    }
+
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         // Usunięcie klienta z sesji
