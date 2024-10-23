@@ -72,6 +72,23 @@
     </section>
 
     <section class="info-block" id="history-app-client-sec">
+        <h2>History of Appointments</h2>
+        <div class="appointment-history-container">
+            <div th:each="appointment : ${appointments}" th:classappend="${appointment.status == 'canceled' ? 'canceled-card' : 'completed-card'}" class="appointment-card">
+                <div class="appointment-header">
+                    <p th:text="'Date: ' + ${#temporals.format(appointment.appointmentDate, 'dd MMM yyyy HH:mm')}"></p>
+                    <p th:text="'Status: ' + ${appointment.status}"></p>
+                </div>
+                <div class="appointment-body">
+                    <p><strong>Type:</strong> <span th:text="${appointment.animal.animalType.type}"></span></p>
+                    <p><strong>Name:</strong> <span th:text="${appointment.animal.name}"></span></p>
+                    <p><strong>Doctor:</strong> <span th:text="${appointment.vet.user.firstName} + ' ' + ${appointment.vet.user.lastName}"></span></p>
+                    <p><strong>Service:</strong> <span th:text="${appointment.service.name}"></span></p>
+                    <p><strong>Price:</strong> <span th:text="${appointment.service.price}"></span></p>
+                </div>
+            </div>
+        </div>
+
 
     </section>
 
