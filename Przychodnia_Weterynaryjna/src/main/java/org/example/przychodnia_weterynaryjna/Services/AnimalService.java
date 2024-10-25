@@ -24,6 +24,10 @@ public class AnimalService {
         return animalRepository.findAnimalsByClient_Id(userId);
     }
 
+    public void add(Animal animal) {
+        animalRepository.save(animal);
+    }
+
 
 
 

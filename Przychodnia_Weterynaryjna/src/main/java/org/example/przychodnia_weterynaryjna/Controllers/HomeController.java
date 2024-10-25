@@ -91,6 +91,7 @@ public class HomeController {
 
             if (vet.isPresent()) {
                 model.addAttribute("vet", vet.get());
+                session.setAttribute("vet", vet.get());
                 return "vetPage";
             } else {
                 bindingResult.rejectValue("password", "error.logInDto", "Invalid email or password");

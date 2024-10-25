@@ -84,7 +84,7 @@ header {
 .main-container {
     display: flex;
     flex-direction: row;
-    padding: 20px;
+    /*padding: 20px;*/
     justify-content: flex-start;
 }
 
@@ -281,14 +281,26 @@ input[type="text"], input[type="date"] {
     background-color: #e6ffe6;
     border-color: #66ff66;
 }
-
-
-
-
-
  /*Form end */
 
+nav ul {
+    background-color: #33372C;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    /*margin-top: 10px;*/
+}
+nav ul li {
 
+    padding: 15px;
+    color: white;
+    border-bottom: 1px solid transparent;
+}
+nav ul li:hover{
+    border-bottom: 1px solid #466a4b ;
+}
+footer{
+    margin-top: 20px;
+}
 
 /*footer {*/
 /*    position: fixed;*/

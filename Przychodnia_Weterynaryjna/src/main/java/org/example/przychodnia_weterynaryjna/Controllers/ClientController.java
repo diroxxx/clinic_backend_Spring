@@ -49,9 +49,9 @@ public class ClientController {
         Client client = (Client) session.getAttribute("client");
 
         if (client == null) {
-            return "redirect:/login";
+            return "redirect:/home/login-Site";
         }
-
+        System.out.println(client);
         model.addAttribute("client", client);
         model.addAttribute("appointmentBook", new AppointmentDto());
         model.addAttribute("animalRegister", new AnimalRegisterDto());
@@ -61,7 +61,7 @@ public class ClientController {
         model.addAttribute("appointments",appointmentsByUserId);
 
 
-        List<String> animalsTypeList = animalTypeService.getAllAnimalTypes();
+        List<AnimalType> animalsTypeList = animalTypeService.getAnimalTypes();
         model.addAttribute("animalsType",animalsTypeList);
 
         List<Animal> userAnimal = animalService.getAllAnimalsByUserId(client.getId());
@@ -85,7 +85,7 @@ public class ClientController {
 
         Appointment appointment = new Appointment();
 
-        appointment.setClient(clientService.getClientById(1).get());
+        appointment.setClient(clientService.getClientById(appointmentDto.getClientId()).orElseThrow());
         appointment.setAnimal(animalService.getAnimalById(appointmentDto.getAnimalId())
                 .orElseThrow(() -> new IllegalArgumentException("Invalid animal ID!")));
         appointment.setService(serviceTypeService.getServiceById(appointmentDto.getServiceId())
@@ -102,6 +102,16 @@ public class ClientController {
     }
     @PostMapping("/registerAnimal")
     public String registerAnimal(AnimalRegisterDto animalRegisterDto) {
+
+        System.out.println(animalRegisterDto.toString());
+
+        Animal animal = new Animal();
+        Client client = clientService.getClientById(animalRegisterDto.getClientId()).orElseThrow();
+        animal.setClient(client);
+        animal.setAnimalType(animalTypeService.getAnimalTypeById(animalRegisterDto.getTypeId()).orElseThrow(() -> new IllegalArgumentException("Invalid animal type!")));
+        animal.setName(animalRegisterDto.getName());
+        animalService.add(animal);
+
         return "redirect:/client/Site";
     }
 

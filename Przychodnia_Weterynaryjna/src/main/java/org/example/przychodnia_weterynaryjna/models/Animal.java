@@ -32,7 +32,7 @@ public class Animal {
     public Animal() {
     }
 
-    public Animal(@NotNull String name, @NotNull Client client, @NotNull AnimalType animalType) {
+    public Animal( String name, @NotNull Client client, @NotNull AnimalType animalType) {
         this.name = name;
         this.client = client;
         this.animalType = animalType;
@@ -46,11 +46,11 @@ public class Animal {
         this.id = id;
     }
 
-    public @Size(max = 50) @Null String getName() {
+    public @Size(max = 50)  String getName() {
         return name;
     }
 
-    public void setName(@Size(max = 50) @Null String name) {
+    public void setName(@Size(max = 50) String name) {
         this.name = name;
     }
 

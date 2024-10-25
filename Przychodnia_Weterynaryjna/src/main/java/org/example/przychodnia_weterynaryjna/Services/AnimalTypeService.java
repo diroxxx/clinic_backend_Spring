@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AnimalTypeService {
@@ -23,5 +24,15 @@ public class AnimalTypeService {
         animalTypes.forEach(x -> animalTypesList.add(x.getType()));
         return animalTypesList;
     }
+
+    public List<AnimalType> getAnimalTypes() {
+        return (List<AnimalType>) animalTypeRepository.findAll();
+    }
+
+    public Optional <AnimalType> getAnimalTypeById(int id) {
+        return animalTypeRepository.findById(id);
+    }
+
+
 
 }

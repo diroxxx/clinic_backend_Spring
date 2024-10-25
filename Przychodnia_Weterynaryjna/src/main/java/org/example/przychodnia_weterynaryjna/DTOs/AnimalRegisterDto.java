@@ -1,6 +1,10 @@
 package org.example.przychodnia_weterynaryjna.DTOs;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class AnimalRegisterDto {
+
+    @NotBlank(message = "Please enter the animal's name. If the animal doesn’t have a name, choose one for easy identification")
     private String name;
     private int typeId;
     private int clientId;
@@ -36,5 +40,14 @@ public class AnimalRegisterDto {
 
     public void setClientId(int clientId) {
         this.clientId = clientId;
+    }
+
+    @Override
+    public String toString() {
+        return "AnimalRegisterDto{" +
+                "name='" + name + '\'' +
+                ", typeId=" + typeId +
+                ", clientId=" + clientId +
+                '}';
     }
 }

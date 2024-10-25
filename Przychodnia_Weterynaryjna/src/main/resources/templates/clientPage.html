@@ -29,10 +29,9 @@
         <ul>
             <li class="history-app-client" onclick="showClientOption('history-app-client')" >History of appointments</li>
             <li class="book-app-client" onclick="showClientOption('book-app-client')">Book a reservation</li>
-            <li class="account-info-client" onclick="showClientOption('account-info-client')">Account info</li>
-            <li class="main-info" onclick="showClientOption('main-info')">main info</li>
-            <li class="add-your-animal" onclick="showClientOption('add-your-animal')">add your animal</li>
-
+<!--            <li class="account-info-client" onclick="showClientOption('account-info-client')">Account info</li>-->
+<!--            <li class="main-info" onclick="showClientOption('main-info')">main info</li>-->
+            <li class="add-your-animal" onclick="showClientOption('add-your-animal')">Add animal</li>
         </ul>
     </nav>
 
@@ -64,10 +63,10 @@
                       <input th:field="*{description}" id="desc" type="text" placeholder="Enter description"><br>
 
                       <label>
-                          <input th:field="*{clientId}" type="text" th:value="${client.getId()}" hidden>
+                          <input name="clientId"  th:value="${client.getId()}" type="hidden">
                       </label>
 
-                      <button type="submit">Rezerwuj</button>
+                      <button type="submit">Register</button>
                   </form>
     </section>
 
@@ -96,8 +95,20 @@
         <h2>Add Your pet</h2>
 
         <form method="post" action="/client/registerAnimal" th:object="${animalRegister}">
+            <label for="registerType">Type:</label>
+            <select id="registerType" th:field="*{typeId}">
+                <option th:each="type : ${animalsType}"   th:value="${type.id}" th:text="${type.type}">Type</option>
+            </select>
 
+            <label for="animalNameRegister">Animal name:</label>
+            <input th:field="*{name}" id="animalNameRegister" type="text" placeholder="Enter animal name">
 
+            <label>
+
+                <input  name="clientId"  th:value="${client.getId()}" th:placeholder="${client.getId()}" type="hidden">
+            </label>
+
+            <button type="submit">Add</button>
         </form>
     </section>
 
