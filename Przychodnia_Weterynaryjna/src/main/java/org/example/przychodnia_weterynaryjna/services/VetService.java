@@ -1,9 +1,8 @@
-package org.example.przychodnia_weterynaryjna.Services;
+package org.example.przychodnia_weterynaryjna.services;
 
 import jakarta.transaction.Transactional;
-import org.example.przychodnia_weterynaryjna.DTOs.RegisterDto;
-import org.example.przychodnia_weterynaryjna.Repositories.UserRepository;
-import org.example.przychodnia_weterynaryjna.Repositories.VetRepository;
+import lombok.RequiredArgsConstructor;
+import org.example.przychodnia_weterynaryjna.repositories.VetRepository;
 import org.example.przychodnia_weterynaryjna.models.User;
 import org.example.przychodnia_weterynaryjna.models.Vet;
 import org.springframework.stereotype.Service;
@@ -12,13 +11,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class VetService {
 
     private final VetRepository vetRepository;
-
-    public VetService(VetRepository vetRepository) {
-        this.vetRepository = vetRepository;
-    }
 
     public Optional<Vet> getVetById(int id) {
         return vetRepository.findById(id);

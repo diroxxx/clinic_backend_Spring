@@ -1,22 +1,20 @@
-package org.example.przychodnia_weterynaryjna.Services;
+package org.example.przychodnia_weterynaryjna.services;
 
-import org.example.przychodnia_weterynaryjna.Repositories.AnimalTypeRepository;
+import lombok.RequiredArgsConstructor;
+import org.example.przychodnia_weterynaryjna.repositories.AnimalTypeRepository;
 import org.example.przychodnia_weterynaryjna.models.AnimalType;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class AnimalTypeService {
 
     private final AnimalTypeRepository animalTypeRepository;
 
-    public AnimalTypeService(AnimalTypeRepository animalTypeRepository) {
-        this.animalTypeRepository = animalTypeRepository;
-    }
-
+//    @Cacheable
     public List<String> getAllAnimalTypes() {
 
         List<AnimalType> animalTypes = (List<AnimalType>) animalTypeRepository.findAll();
@@ -26,7 +24,7 @@ public class AnimalTypeService {
     }
 
     public List<AnimalType> getAnimalTypes() {
-        return (List<AnimalType>) animalTypeRepository.findAll();
+        return animalTypeRepository.findAll();
     }
 
     public Optional <AnimalType> getAnimalTypeById(int id) {

@@ -1,6 +1,7 @@
-package org.example.przychodnia_weterynaryjna.Services;
+package org.example.przychodnia_weterynaryjna.services;
 
-import org.example.przychodnia_weterynaryjna.Repositories.AnimalRepository;
+import lombok.RequiredArgsConstructor;
+import org.example.przychodnia_weterynaryjna.repositories.AnimalRepository;
 import org.example.przychodnia_weterynaryjna.models.Animal;
 import org.springframework.stereotype.Service;
 
@@ -8,13 +9,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class AnimalService {
 
     private AnimalRepository animalRepository;
-
-    public AnimalService(AnimalRepository animalRepository) {
-        this.animalRepository = animalRepository;
-    }
 
     public Optional<Animal> getAnimalById(int id) {
         return animalRepository.findById(id);

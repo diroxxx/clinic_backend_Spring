@@ -1,22 +1,28 @@
 package org.example.przychodnia_weterynaryjna.models;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Setter
+@Getter
 public class Vet {
 
 
+    @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Setter
     @Column(name = "years_of_experience")
     private int yearsOfExperience;
 
+    @Getter
     @OneToOne
     @JoinColumn(name = "user_id", unique = true, nullable = false)
     private User user;
@@ -36,28 +42,4 @@ public class Vet {
         this.user = user;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-
-    public int getYearsOfExperience() {
-        return yearsOfExperience;
-    }
-
-    public void setYearsOfExperience(int yearsOfExperience) {
-        this.yearsOfExperience = yearsOfExperience;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 }

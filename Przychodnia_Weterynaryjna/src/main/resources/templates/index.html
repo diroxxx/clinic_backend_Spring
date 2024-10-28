@@ -13,15 +13,13 @@
 <body>
   <header>
 
-        <div class="logo-header">
-            <img class="logo-image" src="/photos/logo.png" th:href="@{/photos/logo.png}" alt="zdjecie weterynarza">
-            <h1>Veterinary <br> Clinic</h1>
-        </div>
-
+      <div class="logo-header">
+          <img class="logo-image" src="/photos/logo.png" th:href="@{/photos/logo.png}" alt="zdjecie weterynarza">
+          <h1>Veterinary <br> Clinic</h1>
+      </div>
       <div  class = "btn-header-container">
-
-          <a th:href="@{/home/register-Page}"  class="main-SingIn-btn">Sign in</a>
-          <a th:href="@{/home/login-Site}" class="main-logIn-btn">Log in</a>
+          <a  th:href="@{/home/register-page}"  class="main-SingIn-btn">Sign in</a>
+          <a  th:href="@{/home/login-page}" class="main-logIn-btn">Log in</a>
       </div>
 
   </header>
@@ -29,91 +27,8 @@
   <div id="toast" th:if="${message}" class="toast" th:text="${message}"></div>
 
 
+  <main th:replace="~{fragments :: main-Page-Content}"></main>
 
-  <main th:replace="~{fragments :: main-Page-Content}">
-
-  </main>
-
-
-
-
-<!--  <main th:fragment="main-Page-Content">-->
-<!--      <article>-->
-<!--          <h2>O naszej działalności</h2>-->
-<!--          <p>Witamy w Przychodni Weterynaryjnej "AnimalCare", miejscu, w którym priorytetem jest zdrowie i dobro Twojego zwierzaka. Jesteśmy zespołem doświadczonych weterynarzy, którzy z pasją podchodzą do opieki nad zwierzętami domowymi. Od lat pomagamy właścicielom psów, kotów, gryzoni i innych pupili w dbaniu o ich zdrowie i dobre samopoczucie.-->
-
-<!--              Nasza oferta obejmuje pełen zakres usług weterynaryjnych: od rutynowych szczepień i badań profilaktycznych, po skomplikowane zabiegi chirurgiczne i leczenie chorób przewlekłych. Nasz nowoczesny sprzęt diagnostyczny pozwala nam szybko i dokładnie stawiać diagnozy, co przekłada się na skuteczniejsze leczenie.-->
-
-<!--              Wierzymy, że każda wizyta powinna być komfortowa zarówno dla zwierzaka, jak i jego właściciela. Dlatego stawiamy na indywidualne podejście oraz empatię w kontaktach z naszymi pacjentami. W naszej przychodni znajdziesz także sklep z wysokiej jakości karmą oraz akcesoriami dla zwierząt.-->
-
-<!--              Oferujemy również usługi z zakresu fizjoterapii oraz porady dietetyczne, by Twój pupil mógł cieszyć się zdrowiem i energią przez długie lata. Nasza klinika jest otwarta 7 dni w tygodniu, a w nagłych przypadkach oferujemy całodobową pomoc.</p>-->
-<!--      </article>-->
-
-<!--      <section class="animal-container">-->
-<!--          <h2>Animals we service</h2>-->
-<!--          <div class="containerAnimalType" th:each="type : ${animalsType}" >-->
-<!--              <p class="animalTypeBlock" th:text="${type}"> dog </p>-->
-<!--          </div>-->
-
-<!--      </section>-->
-
-<!--      <section>-->
-<!--          <h2>Services</h2>-->
-
-<!--          <table>-->
-<!--              <thead>-->
-<!--              <tr>-->
-<!--                  <th>Name</th>-->
-<!--                  <th>Price</th>-->
-<!--              </tr>-->
-<!--              </thead>-->
-
-<!--              <tbody>-->
-<!--              <tr th:each="serType : ${servicesType}" th:object="${serType}">-->
-<!--                  <td th:text="*{name}">Usg</td>-->
-<!--                  <td th:text="*{price}">320zł</td>-->
-
-<!--              </tr>-->
-
-<!--              </tbody>-->
-<!--          </table>-->
-<!--      </section>-->
-
-<!--&lt;!&ndash;      <section>&ndash;&gt;-->
-<!--&lt;!&ndash;          <h2>Rezerwacja  Usługi</h2>&ndash;&gt;-->
-<!--&lt;!&ndash;          <br>&ndash;&gt;-->
-<!--&lt;!&ndash;          <form method="post">&ndash;&gt;-->
-<!--&lt;!&ndash;              <label for="typ">Typ usługi:</label>&ndash;&gt;-->
-<!--&lt;!&ndash;              <input id="typ" type="text"><br>&ndash;&gt;-->
-<!--&lt;!&ndash;              <label for="zwierze">Typ zwierzecia:</label>&ndash;&gt;-->
-<!--&lt;!&ndash;              <input id="zwierze" type="text"><br>&ndash;&gt;-->
-<!--&lt;!&ndash;              <label for="data">data:</label>&ndash;&gt;-->
-<!--&lt;!&ndash;              <input id="data" type="date"><br>&ndash;&gt;-->
-<!--&lt;!&ndash;              <button type="submit">Rezerwuj</button>&ndash;&gt;-->
-<!--&lt;!&ndash;          </form>&ndash;&gt;-->
-<!--&lt;!&ndash;          <a href="clientPage.html" target="_blank"> twoje rezerwacje</a>&ndash;&gt;-->
-<!--&lt;!&ndash;      </section>&ndash;&gt;-->
-
-<!--      <section>-->
-<!--          <h2>Warto przeczytać</h2>-->
-<!--          <ul>-->
-<!--              <li class="title-block" th:id="'article ' + *{title}" th:each="article : ${articles}" th:object="${article}" >-->
-<!--                  <p  th:text="*{title}"    th:attr="data-title=*{title}" onclick="showArticle(this); changeColorTitle(this)" > </p>-->
-<!--              </li>-->
-
-<!--          </ul>-->
-<!--      </section>-->
-
-
-<!--      <section class="article-block" th:id="*{title}" th:each="article : ${articles}" th:object="${article}"  >-->
-<!--          <h2 th:text="*{title}" class="curly-title">Przykładowy tytuł</h2>-->
-<!--            <p class="article-content" th:text="*{content}">Przykładowa treść artykułu.</p>-->
-<!--            <p th:text="*{author}">autor</p>-->
-<!--            <p th:text="*{publicationDate}">data</p>-->
-<!--      </section>-->
-
-
-<!--  </main>-->
 
 <footer th:replace="~{fragments :: main-footer}">
 </footer>

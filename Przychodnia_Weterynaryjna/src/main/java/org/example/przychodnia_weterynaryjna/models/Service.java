@@ -3,12 +3,16 @@ package org.example.przychodnia_weterynaryjna.models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
 public class Service {
 
     @Id
@@ -34,35 +38,4 @@ public class Service {
         this.price = price;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public @NotNull @Size(max = 50) String getName() {
-        return name;
-    }
-
-    public void setName(@NotNull @Size(max = 50) String name) {
-        this.name = name;
-    }
-
-    public @NotNull BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(@NotNull BigDecimal price) {
-        this.price = price;
-    }
-
-    public List<Appointment> getAppointments() {
-        return appointments;
-    }
-
-    public void setAppointments(List<Appointment> appointments) {
-        this.appointments = appointments;
-    }
 }

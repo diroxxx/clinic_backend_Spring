@@ -1,13 +1,12 @@
-package org.example.przychodnia_weterynaryjna.Services;
+package org.example.przychodnia_weterynaryjna.services;
 
-import org.example.przychodnia_weterynaryjna.DTOs.VetArticleDto;
-import org.example.przychodnia_weterynaryjna.Repositories.ArticleRepository;
+import lombok.RequiredArgsConstructor;
+import org.example.przychodnia_weterynaryjna.controllers.DTOs.VetArticleDto;
+import org.example.przychodnia_weterynaryjna.repositories.ArticleRepository;
 import org.example.przychodnia_weterynaryjna.models.Article;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ArticleService {

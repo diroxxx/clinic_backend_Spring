@@ -1,4 +1,4 @@
-package org.example.przychodnia_weterynaryjna.DTOs;
+package org.example.przychodnia_weterynaryjna.controllers.DTOs;
 
 import jakarta.validation.constraints.NotBlank;
 

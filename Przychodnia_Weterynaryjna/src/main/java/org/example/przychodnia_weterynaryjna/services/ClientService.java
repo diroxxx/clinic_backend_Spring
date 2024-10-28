@@ -1,6 +1,7 @@
-package org.example.przychodnia_weterynaryjna.Services;
+package org.example.przychodnia_weterynaryjna.services;
 
-import org.example.przychodnia_weterynaryjna.Repositories.ClientRepository;
+import lombok.RequiredArgsConstructor;
+import org.example.przychodnia_weterynaryjna.repositories.ClientRepository;
 import org.example.przychodnia_weterynaryjna.models.Client;
 import org.example.przychodnia_weterynaryjna.models.User;
 import org.springframework.stereotype.Service;
@@ -8,12 +9,10 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class ClientService {
     private final ClientRepository clientRepository;
 
-    public ClientService(ClientRepository clientRepository) {
-        this.clientRepository = clientRepository;
-    }
 
     public Optional<Client> getClientById(int id) {
         return clientRepository.findById(id);
@@ -22,8 +21,6 @@ public class ClientService {
     public Optional <Client> doesClientExists(String email, String password) {
         return clientRepository.findByUserEmailAndUserPassword(email, password);
     }
-
-
 
     public void registerClient(User user) {
         Client client = new Client(user);

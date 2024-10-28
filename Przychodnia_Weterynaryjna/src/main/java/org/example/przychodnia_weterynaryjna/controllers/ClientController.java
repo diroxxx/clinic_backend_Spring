@@ -1,9 +1,10 @@
-package org.example.przychodnia_weterynaryjna.Controllers;
+package org.example.przychodnia_weterynaryjna.controllers;
 
 import jakarta.servlet.http.HttpSession;
-import org.example.przychodnia_weterynaryjna.DTOs.AnimalRegisterDto;
-import org.example.przychodnia_weterynaryjna.DTOs.AppointmentDto;
-import org.example.przychodnia_weterynaryjna.Services.*;
+import lombok.RequiredArgsConstructor;
+import org.example.przychodnia_weterynaryjna.controllers.DTOs.AnimalRegisterDto;
+import org.example.przychodnia_weterynaryjna.controllers.DTOs.AppointmentDto;
+import org.example.przychodnia_weterynaryjna.services.*;
 import org.example.przychodnia_weterynaryjna.models.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,10 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("/client")
 public class ClientController {
     private final ClientService clientService;
@@ -26,23 +27,6 @@ public class ClientController {
     private final UserService userService;
     private final AppointmentService appointmentService;
 
-    public ClientController(ClientService clientService,
-                          AnimalService animalService,
-                          AnimalTypeService animalTypeService,
-                          ServiceTypeService serviceTypeService,
-                          ArticleService articleService,
-                          VetService vetService,
-                          UserService userService,
-                            AppointmentService appointmentService) {
-        this.clientService = clientService;
-        this.animalService = animalService;
-        this.animalTypeService = animalTypeService;
-        this.serviceTypeService = serviceTypeService;
-        this.articleService = articleService;
-        this.vetService = vetService;
-        this.userService = userService;
-        this.appointmentService = appointmentService;
-    }
 
     public @GetMapping("/Site")
     String clientPage(Model model, HttpSession session) {

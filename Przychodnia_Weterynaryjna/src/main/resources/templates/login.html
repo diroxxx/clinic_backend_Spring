@@ -19,7 +19,7 @@
 
 <section class="form-section">
 
-  <form class="form-L-R" method="post" action="/home/logIn" th:object="${logInDto}">
+  <form class="form-L-R" method="post" action="/home/login" th:object="${logInDto}">
 
     <div class="role-list">
       <input th:field="*{role}" id="client" type="radio" name="role" value="client" class="tochange" required>

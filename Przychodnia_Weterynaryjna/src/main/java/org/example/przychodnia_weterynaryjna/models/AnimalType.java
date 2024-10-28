@@ -2,11 +2,15 @@ package org.example.przychodnia_weterynaryjna.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
 public class AnimalType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,36 +24,7 @@ public class AnimalType {
     private List<Animal> animals = new ArrayList<>();
 
 
-    public AnimalType(String type) {
-        this.type = type;
-    }
-
     public AnimalType() {
-
     }
 
-
-    public @Size(max = 50) String getType() {
-        return type;
-    }
-
-    public void setType(@Size(max = 50) String type) {
-        this.type = type;
-    }
-
-    public List<Animal> getAnimals() {
-        return animals;
-    }
-
-    public void setAnimals(List<Animal> animals) {
-        this.animals = animals;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 }

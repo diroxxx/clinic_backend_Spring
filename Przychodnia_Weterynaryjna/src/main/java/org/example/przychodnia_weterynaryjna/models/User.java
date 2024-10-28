@@ -4,8 +4,12 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 public class User {
 
     @Id
@@ -46,54 +50,6 @@ public class User {
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.password = password;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public @NotNull @Size(min = 1, max = 50) String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(@NotNull @Size(min = 1, max = 50) String firstName) {
-        this.firstName = firstName;
-    }
-
-    public @NotNull @Size(min = 1, max = 50) String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(@NotNull @Size(min = 1, max = 50) String lastName) {
-        this.lastName = lastName;
-    }
-
-    public @NotNull @Email @Size(min = 2, max = 50) String getEmail() {
-        return email;
-    }
-
-    public void setEmail(@NotNull @Email @Size(min = 2, max = 50) String email) {
-        this.email = email;
-    }
-
-    public @Size(min = 9, max = 9) String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(@Size(min = 9, max = 9) String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public @NotNull @Size(min = 8, max = 40) String getPassword() {
-        return password;
-    }
-
-    public void setPassword(@NotNull @Size(min = 8, max = 40) String password) {
         this.password = password;
     }
 

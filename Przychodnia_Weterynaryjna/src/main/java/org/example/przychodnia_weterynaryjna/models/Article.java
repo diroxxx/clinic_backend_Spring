@@ -3,12 +3,16 @@ package org.example.przychodnia_weterynaryjna.models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
+@Getter
+@Setter
 public class Article {
 
     @Id
@@ -43,44 +47,4 @@ public class Article {
         this.vet = vet;
     }
 
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public @NotNull @Size(max = 100) String getTitle() {
-        return title;
-    }
-
-    public void setTitle(@NotNull @Size(max = 100) String title) {
-        this.title = title;
-    }
-
-    public @NotNull @Size(max = 1000) String getContent() {
-        return content;
-    }
-
-    public void setContent(@NotNull @Size(max = 1000) String content) {
-        this.content = content;
-    }
-
-    public @NotNull LocalDateTime getDate() {
-        return date;
-    }
-
-    public void setDate(@NotNull LocalDateTime date) {
-        this.date = date;
-    }
-
-    public Vet getVet() {
-        return vet;
-    }
-
-    public void setVet(Vet vet) {
-        this.vet = vet;
-    }
 }

@@ -1,12 +1,16 @@
 package org.example.przychodnia_weterynaryjna.models;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
 public class Client {
 
     @Id
@@ -29,22 +33,6 @@ public class Client {
 
     public Client(User user) {
         this.user = user;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     @Override
