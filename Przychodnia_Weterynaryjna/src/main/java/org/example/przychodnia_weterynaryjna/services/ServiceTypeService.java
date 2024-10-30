@@ -19,9 +19,6 @@ public class ServiceTypeService {
     }
 
     public List<org.example.przychodnia_weterynaryjna.models.Service> printAllServices() {
-        Iterable<org.example.przychodnia_weterynaryjna.models.Service> services = serviceRepository.findAll();
-        List<org.example.przychodnia_weterynaryjna.models.Service> list = new ArrayList<>();
-        services.forEach(list::add);
-        return list;
+        return serviceRepository.findAll();
     }
 }

@@ -17,10 +17,9 @@ public class AnimalTypeService {
 //    @Cacheable
     public List<String> getAllAnimalTypes() {
 
-        List<AnimalType> animalTypes = (List<AnimalType>) animalTypeRepository.findAll();
-        List<String> animalTypesList = new ArrayList<>();
-        animalTypes.forEach(x -> animalTypesList.add(x.getType()));
-        return animalTypesList;
+        List<AnimalType> animalTypes = animalTypeRepository.findAll();
+        return animalTypes.stream().map(AnimalType::getType)
+                .toList();
     }
 
     public List<AnimalType> getAnimalTypes() {

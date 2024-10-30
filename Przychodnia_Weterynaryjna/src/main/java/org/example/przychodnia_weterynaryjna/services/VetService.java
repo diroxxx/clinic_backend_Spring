@@ -31,6 +31,8 @@ public class VetService {
     public void registerVet(User user) {
         Vet vet = new Vet(user);
         vetRepository.save(vet);
+
+
     }
 
 

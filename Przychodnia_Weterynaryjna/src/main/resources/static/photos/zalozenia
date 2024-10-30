@@ -5,4 +5,4 @@ vet:
     -zmiana danych.
     -wyswietla aktualne rezerwacje.
     -wyswietla historie rezerwacji.
-    -
+    -wyswietlanie ilości wizyt w ciagu miesiąca w formie kalendarza ze stopniami oblęzenia w kolorach
