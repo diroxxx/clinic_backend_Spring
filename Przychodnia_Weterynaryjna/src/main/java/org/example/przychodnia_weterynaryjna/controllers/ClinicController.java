@@ -2,8 +2,11 @@ package org.example.przychodnia_weterynaryjna.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.example.przychodnia_weterynaryjna.controllers.DTOs.AnimalTypeDto;
+import org.example.przychodnia_weterynaryjna.controllers.DTOs.ServiceDto;
 import org.example.przychodnia_weterynaryjna.controllers.mapers.AnimalTypeMapper;
+import org.example.przychodnia_weterynaryjna.controllers.mapers.ServiceMapper;
 import org.example.przychodnia_weterynaryjna.models.AnimalType;
+import org.example.przychodnia_weterynaryjna.models.Service;
 import org.example.przychodnia_weterynaryjna.services.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -18,7 +21,7 @@ import java.util.List;
 @RequestMapping("/api")
 @RequiredArgsConstructor
 @CrossOrigin("http://localhost:3000")
-public class AnimalController {
+public class ClinicController {
     private final ClientService clientService;
     private final AnimalService animalService;
     private final AnimalTypeService animalTypeService;
@@ -29,6 +32,7 @@ public class AnimalController {
     private final AppointmentService appointmentService;
 
     private  final AnimalTypeMapper animalTypeMapper;
+    private final ServiceMapper serviceMapper;
 
     @GetMapping("/animalTypes")
     public ResponseEntity<List<AnimalTypeDto>> getAnimalTypes(){
@@ -41,6 +45,15 @@ public class AnimalController {
             animalTypeDtoList.add(animalTypeMapped);
         }
         return ResponseEntity.ok(animalTypeDtoList);
+    }
+    @GetMapping("/infoAboutServices")
+    public ResponseEntity<List<ServiceDto>> getServiceTypes(){
+
+        List<Service> serviceList = serviceTypeService.printAllServices();
+        List<ServiceDto> serviceDtoList = new ArrayList<>();
+        serviceList.
+                forEach(service -> serviceDtoList.add(serviceMapper.ServiceToServiceDto(service)));
+        return ResponseEntity.ok(serviceDtoList);
     }
 
 }
