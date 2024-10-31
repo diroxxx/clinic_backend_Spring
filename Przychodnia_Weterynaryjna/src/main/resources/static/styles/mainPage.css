@@ -141,11 +141,6 @@ article, section {
 
 .containerAnimalType {
     display: inline-flex;
-    /*display: flex;*/
-    /*flex-direction: column;*/
-    /*flex-wrap: wrap;*/
-    /*padding: 40px;*/
-
     align-items: stretch;
     justify-content: center;
 
