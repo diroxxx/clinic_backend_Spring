@@ -1,21 +1,22 @@
 package org.example.przychodnia_weterynaryjna.controllers;
 
 import lombok.RequiredArgsConstructor;
-import org.example.przychodnia_weterynaryjna.controllers.DTOs.AnimalTypeDto;
-import org.example.przychodnia_weterynaryjna.controllers.DTOs.ServiceDto;
+import org.example.przychodnia_weterynaryjna.controllers.DTOs.*;
 import org.example.przychodnia_weterynaryjna.controllers.mapers.AnimalTypeMapper;
 import org.example.przychodnia_weterynaryjna.controllers.mapers.ServiceMapper;
+import org.example.przychodnia_weterynaryjna.controllers.mapers.VetMapper;
 import org.example.przychodnia_weterynaryjna.models.AnimalType;
+import org.example.przychodnia_weterynaryjna.models.Client;
 import org.example.przychodnia_weterynaryjna.models.Service;
+import org.example.przychodnia_weterynaryjna.models.Vet;
 import org.example.przychodnia_weterynaryjna.services.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/api")
@@ -30,6 +31,7 @@ public class ClinicController {
     private final VetService vetService;
     private final UserService userService;
     private final AppointmentService appointmentService;
+    private final VetMapper vetMapper;
 
     private  final AnimalTypeMapper animalTypeMapper;
     private final ServiceMapper serviceMapper;
@@ -56,4 +58,33 @@ public class ClinicController {
         return ResponseEntity.ok(serviceDtoList);
     }
 
+
+    @PostMapping("/login")
+    public ResponseEntity<LoggedUser>  login(@RequestBody LogInDto loginDto){
+        LoggedUser loggedUser = new LoggedUser();
+        System.out.println(loginDto);
+
+        if (loginDto.getRole().equals("vet") ){
+           Optional <Vet> isVetExist = vetService.doesVetExists(loginDto.getEmail(), loginDto.getPassword());
+           if (isVetExist.isPresent()){
+                loggedUser.setId(isVetExist.get().getId());
+                loggedUser.setUserVet(true);
+           }
+        } else {
+            Optional<Client> clientExist = clientService.doesClientExists(loginDto.getEmail(), loginDto.getPassword());
+            if (clientExist.isPresent()){
+                loggedUser.setId(clientExist.get().getId());
+                loggedUser.setUserVet(false);
+            }
+        }
+        return ResponseEntity.ok(loggedUser);
+    }
+
+    @GetMapping("/vets")
+    public ResponseEntity<List<VetDto>>  getVets() {
+        List<Vet> vets = vetService.getAllVets();
+        return ResponseEntity.ok( vets.stream()
+                .map(vetMapper::VetMapToVetDto)
+                .toList());
+    }
 }

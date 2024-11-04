@@ -11,6 +11,10 @@ import lombok.Setter;
 @Getter
 public class LogInDto {
 
+
+    @NotBlank(message = "Role must be selected")
+    private String role;
+
     @NotBlank(message = "Email cannot be empty")
     @Email(message = "Invalid email format")
     private String email;
@@ -19,8 +23,7 @@ public class LogInDto {
     @Size(min = 8, message = "Password must be at least 8 characters long")
     private String password;
 
-    @NotBlank(message = "Role must be selected")
-    private String role;
+
 
     public LogInDto(String email, String password, String role) {
         this.email = email;

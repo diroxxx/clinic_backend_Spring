@@ -24,14 +24,13 @@ public class VetService {
         return vetRepository.findByUserEmailAndUserPassword(email, password);
     }
     public List<Vet> getAllVets() {
-        return (List<Vet>) vetRepository.findAll();
+        return vetRepository.findAll();
     }
 
     @Transactional
     public void registerVet(User user) {
         Vet vet = new Vet(user);
         vetRepository.save(vet);
-
 
     }
 
