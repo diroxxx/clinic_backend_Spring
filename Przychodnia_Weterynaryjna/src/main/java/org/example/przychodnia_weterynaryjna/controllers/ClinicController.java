@@ -3,17 +3,17 @@ package org.example.przychodnia_weterynaryjna.controllers;
 import lombok.RequiredArgsConstructor;
 import org.example.przychodnia_weterynaryjna.controllers.DTOs.*;
 import org.example.przychodnia_weterynaryjna.controllers.mapers.AnimalTypeMapper;
+import org.example.przychodnia_weterynaryjna.controllers.mapers.AppointmentMapper;
 import org.example.przychodnia_weterynaryjna.controllers.mapers.ServiceMapper;
 import org.example.przychodnia_weterynaryjna.controllers.mapers.VetMapper;
-import org.example.przychodnia_weterynaryjna.models.AnimalType;
-import org.example.przychodnia_weterynaryjna.models.Client;
-import org.example.przychodnia_weterynaryjna.models.Service;
-import org.example.przychodnia_weterynaryjna.models.Vet;
+import org.example.przychodnia_weterynaryjna.models.*;
 import org.example.przychodnia_weterynaryjna.services.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -32,6 +32,7 @@ public class ClinicController {
     private final UserService userService;
     private final AppointmentService appointmentService;
     private final VetMapper vetMapper;
+    private final AppointmentMapper appointmentMapper;
 
     private  final AnimalTypeMapper animalTypeMapper;
     private final ServiceMapper serviceMapper;
@@ -85,6 +86,25 @@ public class ClinicController {
         List<Vet> vets = vetService.getAllVets();
         return ResponseEntity.ok( vets.stream()
                 .map(vetMapper::VetMapToVetDto)
+                .toList());
+    }
+
+    @PostMapping("/reservation")
+    public ResponseEntity<String> registerAppointment(@RequestBody AppointmentDto appointmentDto) {
+        Appointment appointment = appointmentMapper.appointmentDtoToAppointment(
+                appointmentDto
+        );
+        appointmentService.makeAppointment(appointment);
+
+        return ResponseEntity.ok("Appointment registered successfully");
+    }
+
+    @GetMapping("/typeOfServices")
+    public ResponseEntity<List<ServiceTypeDto>> getTypesOfServices() {
+
+        List<Service> services = serviceTypeService.printAllServices();
+        return ResponseEntity.ok(services.stream()
+                .map(serviceMapper::ServiceMapperToServiceTypeDto)
                 .toList());
     }
 }
