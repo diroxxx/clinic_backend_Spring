@@ -2,19 +2,15 @@ package org.example.przychodnia_weterynaryjna.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.example.przychodnia_weterynaryjna.controllers.DTOs.*;
-import org.example.przychodnia_weterynaryjna.controllers.mapers.AnimalTypeMapper;
-import org.example.przychodnia_weterynaryjna.controllers.mapers.AppointmentMapper;
-import org.example.przychodnia_weterynaryjna.controllers.mapers.ServiceMapper;
-import org.example.przychodnia_weterynaryjna.controllers.mapers.VetMapper;
+import org.example.przychodnia_weterynaryjna.controllers.mapers.*;
 import org.example.przychodnia_weterynaryjna.models.*;
 import org.example.przychodnia_weterynaryjna.services.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.net.URI;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,8 +27,10 @@ public class ClinicController {
     private final VetService vetService;
     private final UserService userService;
     private final AppointmentService appointmentService;
+
     private final VetMapper vetMapper;
     private final AppointmentMapper appointmentMapper;
+    private final AnimalMapper animalMapper;
 
     private  final AnimalTypeMapper animalTypeMapper;
     private final ServiceMapper serviceMapper;
@@ -107,4 +105,17 @@ public class ClinicController {
                 .map(serviceMapper::ServiceMapperToServiceTypeDto)
                 .toList());
     }
+
+    @GetMapping("/animalsNames")
+    public ResponseEntity<List<AnimalNameDto>> getAnimalNames(@RequestParam int userId)  {
+
+        List<Animal> animals = animalService.getAllAnimalsByClientId(userId);
+//        System.out.println(animals);
+
+        return ResponseEntity.ok(animals.stream()
+                .map(animalMapper::AnimalMapToAnimalNameDto)
+                .toList());
+    }
+
+
 }

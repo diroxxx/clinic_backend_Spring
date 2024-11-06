@@ -48,7 +48,7 @@ public class ClientController {
         List<AnimalType> animalsTypeList = animalTypeService.getAnimalTypes();
         model.addAttribute("animalsType",animalsTypeList);
 
-        List<Animal> userAnimal = animalService.getAllAnimalsByUserId(client.getId());
+        List<Animal> userAnimal = animalService.getAllAnimalsByClientId(client.getId());
         model.addAttribute("userAnimals",userAnimal);
 
         List<Vet> vets = vetService.getAllVets();

@@ -38,4 +38,13 @@ public class Animal {
         this.animalType = animalType;
     }
 
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", animalType=" + animalType +
+                ", client=" + client +
+                '}';
+    }
 }
