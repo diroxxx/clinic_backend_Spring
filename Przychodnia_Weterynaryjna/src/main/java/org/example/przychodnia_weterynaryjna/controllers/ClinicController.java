@@ -109,7 +109,6 @@ public class ClinicController {
     public ResponseEntity<List<AnimalNameDto>> getAnimalNames(@RequestParam int userId)  {
 
         List<Animal> animals = animalService.getAllAnimalsByClientId(userId);
-//        System.out.println(animals);
 
         return ResponseEntity.ok(animals.stream()
                 .map(animalMapper::AnimalMapToAnimalNameDto)
