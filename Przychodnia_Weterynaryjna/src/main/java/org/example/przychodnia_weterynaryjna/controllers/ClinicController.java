@@ -88,6 +88,7 @@ public class ClinicController {
 
     @PostMapping("/reservation")
     public ResponseEntity<String> registerAppointment(@RequestBody AppointmentDto appointmentDto) {
+//        System.out.println(appointmentDto);
         Appointment appointment = appointmentMapper.appointmentDtoToAppointment(
                 appointmentDto
         );
@@ -115,5 +116,14 @@ public class ClinicController {
                 .toList());
     }
 
+    @GetMapping("/appointments")
+    public ResponseEntity<List<AppointmentClientDto>> getAllAppointments(@RequestParam int clientId)  {
+        List<AppointmentStatus> appointmentStatuses = List.of(AppointmentStatus.canceled, AppointmentStatus.completed, AppointmentStatus.scheduled);
+        List<Appointment> appointments = appointmentService.getAppointmentsByClientId(appointmentStatuses, clientId);
+        System.out.println(appointments.size());
+        return ResponseEntity.ok(appointments.stream()
+                .map(appointmentMapper::AppointmentToAppointmentClientDto)
+                .toList());
+    }
 
 }
