@@ -1,5 +1,6 @@
 package org.example.przychodnia_weterynaryjna.services;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.example.przychodnia_weterynaryjna.repositories.AnimalRepository;
 import org.example.przychodnia_weterynaryjna.models.Animal;
@@ -26,13 +27,13 @@ public class AnimalService {
 
     public List<Animal> getAllAnimalsByClientId(int userId) {
         List<Animal> animalsByClientId = animalRepository.findAnimalsByClient_Id(userId);
-//        System.out.println(animalsByClientId.size());
         if (animalsByClientId.isEmpty()) {
             return Collections.emptyList();
         }
         return animalsByClientId ;
     }
 
+    @Transactional
     public void add(Animal animal) {
         animalRepository.save(animal);
     }

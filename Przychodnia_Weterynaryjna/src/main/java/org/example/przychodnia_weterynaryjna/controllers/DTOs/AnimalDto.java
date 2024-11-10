@@ -5,9 +5,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class AnimalTypeDto {
-
+public class AnimalDto {
     private int id;
+    private String name;
     private String type;
 
 }

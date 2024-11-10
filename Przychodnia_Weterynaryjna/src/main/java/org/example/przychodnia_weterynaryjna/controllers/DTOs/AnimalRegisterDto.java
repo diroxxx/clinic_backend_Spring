@@ -1,7 +1,11 @@
 package org.example.przychodnia_weterynaryjna.controllers.DTOs;
 
 import jakarta.validation.constraints.NotBlank;
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
 public class AnimalRegisterDto {
 
     @NotBlank(message = "Please enter the animal's name. If the animal doesn’t have a name, choose one for easy identification")
@@ -16,30 +20,6 @@ public class AnimalRegisterDto {
     }
 
     public AnimalRegisterDto() {
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(int typeId) {
-        this.typeId = typeId;
-    }
-
-    public int getClientId() {
-        return clientId;
-    }
-
-    public void setClientId(int clientId) {
-        this.clientId = clientId;
     }
 
     @Override

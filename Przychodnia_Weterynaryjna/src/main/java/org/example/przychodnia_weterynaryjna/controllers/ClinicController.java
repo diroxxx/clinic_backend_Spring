@@ -125,5 +125,26 @@ public class ClinicController {
                 .map(appointmentMapper::AppointmentToAppointmentClientDto)
                 .toList());
     }
+    @PostMapping("/animalRegister")
+    public ResponseEntity<String> registerAnimal(@RequestBody AnimalRegisterDto animalRegisterDto ) {
+        Animal animal = animalMapper.animalRegisterDtoToAnimal(animalRegisterDto);
+        animalService.add(animal);
+        return ResponseEntity.ok("Animal registered successfully");
+    }
+
+    @GetMapping("/animals")
+    public ResponseEntity<List<AnimalDto>> getAnimalsByClientId(@RequestParam int clientId)  {
+        List<Animal> animals = animalService.getAllAnimalsByClientId(clientId);
+        return ResponseEntity.ok(animals.stream()
+                .map(animalMapper::AnimalMapToAnimalDto)
+                .toList());
+    }
+
+    @GetMapping("/vets/articles")
+    public ResponseEntity<List<VetArticleDto>> getVetsArticles() {
+        List<VetArticleDto> articleDtos = articleService.getAllArticle();
+        return ResponseEntity.ok(articleDtos);
+
+    }
 
 }

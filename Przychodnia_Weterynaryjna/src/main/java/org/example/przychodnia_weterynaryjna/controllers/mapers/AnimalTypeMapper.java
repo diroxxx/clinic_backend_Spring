@@ -11,6 +11,7 @@ public class AnimalTypeMapper {
     public AnimalTypeDto AnimalToAnimalTypeDto(AnimalType animalType) {
         AnimalTypeDto animalTypeDto = new AnimalTypeDto();
         animalTypeDto.setType(animalType.getType());
+        animalTypeDto.setId(animalType.getId());
         return animalTypeDto;
     }
 }
