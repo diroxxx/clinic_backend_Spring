@@ -41,6 +41,9 @@ public class User {
     @Size(min = 8, max = 40)
     private String password;
 
+//    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+//    private Client client;
+
 
     public User() {
     }

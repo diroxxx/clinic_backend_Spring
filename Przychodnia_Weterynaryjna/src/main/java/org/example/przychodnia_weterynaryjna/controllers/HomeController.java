@@ -126,7 +126,5 @@ public class HomeController {
         }
         return "redirect:login";
     }
-
-
 }
 

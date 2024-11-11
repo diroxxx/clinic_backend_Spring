@@ -33,6 +33,7 @@ public class ClinicController {
 
     private  final AnimalTypeMapper animalTypeMapper;
     private final ServiceMapper serviceMapper;
+    public final UserMapper userMapper;
 
     @GetMapping("/animalTypes")
     public ResponseEntity<List<AnimalTypeDto>> getAnimalTypes(){
@@ -145,6 +146,22 @@ public class ClinicController {
         List<VetArticleDto> articleDtos = articleService.getAllArticle();
         return ResponseEntity.ok(articleDtos);
 
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<String> registerUser(@RequestBody RegisterDto registerDto ) {
+        User user = userMapper.RegisterDtoMapToUser(registerDto);
+        User savedUser = userService.registerUser(user);
+
+
+        if (registerDto.getRole().equals("vet")) {
+            vetService.registerVet(savedUser);
+        } else if (registerDto.getRole().equals("client")) {
+            clientService.registerClient(savedUser);
+        } else {
+            return ResponseEntity.badRequest().body("Invalid role");
+        }
+        return ResponseEntity.ok("User registered successfully as " + user.getFirstName() + " " + registerDto.getRole());
     }
 
 }
